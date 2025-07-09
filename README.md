@@ -209,8 +209,6 @@ proofstack bundle --mock
 ### Architecture
 
 - [System Design](docs/architecture.md) - High-level system architecture
-- [Safety Specifications](docs/safety.md) - Writing safety invariants
-- [Lean4 Integration](docs/lean.md) - Formal proof generation
 
 ## Safety Features
 
