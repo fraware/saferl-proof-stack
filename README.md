@@ -4,7 +4,7 @@
 
 SafeRL ProofStack combines reinforcement learning with formal verification in Lean4 and generates comprehensive compliance artifacts for safety-critical AI systems.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### One-Command UX
 
@@ -33,7 +33,7 @@ proofstack train --algo ppo --timesteps 10000 --env CartPole-v1
 proofstack bundle --mock  # Use --mock for offline testing
 ```
 
-## 📋 CLI Commands
+## CLI Commands
 
 ### `proofstack init <env>`
 
@@ -74,7 +74,7 @@ Generate safety proof bundle with compliance artifacts.
 
 Show version information.
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -94,7 +94,7 @@ Show version information.
                        └─────────────────┘
 ```
 
-## 🔧 Installation
+## Installation
 
 ### Prerequisites
 
@@ -126,7 +126,7 @@ export FIREWORKS_API_KEY="your_api_key_here"
 # No API key required when using --mock flag
 ```
 
-## 📚 Usage Examples
+## Usage Examples
 
 ### Basic CartPole Safety
 
@@ -174,7 +174,7 @@ spec.invariants = ["your_safety_invariants"]
 bundle = ProofPipeline(env, spec, api_key).run()
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run All Tests
 
@@ -196,7 +196,7 @@ proofstack train --algo ppo --timesteps 100 --mock
 proofstack bundle --mock
 ```
 
-## 📖 Documentation
+## Documentation
 
 ### API Reference
 
@@ -212,16 +212,16 @@ proofstack bundle --mock
 - [Safety Specifications](docs/safety.md) - Writing safety invariants
 - [Lean4 Integration](docs/lean.md) - Formal proof generation
 
-## 🔒 Safety Features
+## Safety Features
 
-### H-0: Stabilization ✅
+### H-0: Stabilization
 
 - **100% test coverage** with property-based tests
 - **Static analysis gates** (ruff, mypy, pre-commit)
 - **Pinned toolchain versions** for deterministic builds
 - **CI/CD pipeline** with comprehensive checks
 
-### H-1: One-Command UX ✅
+### H-1: One-Command UX
 
 - **Zero-config CLI** with sensible defaults
 - **Async streaming** for real-time proof updates
@@ -241,7 +241,7 @@ proofstack bundle --mock
 - **Algorithm-specific Lean templates**
 - **Parametrized safety specifications**
 
-## 🤝 Contributing
+## Contributing
 
 1. **Fork** the repository
 2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
@@ -262,18 +262,18 @@ pre-commit install
 pytest tests/ -v --cov=proofstack
 ```
 
-## 📄 License
+## License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Lean4](https://leanprover.github.io/) for formal verification
 - [Stable-Baselines3](https://stable-baselines3.readthedocs.io/) for RL algorithms
 - [Fireworks AI](https://fireworks.ai/) for DeepSeek-Prover API
 - [Gymnasium](https://gymnasium.farama.org/) for RL environments
 
-## 📞 Support
+## Support
 
 - **Issues**: [GitHub Issues](https://github.com/your-org/saferl-proofstack/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/your-org/saferl-proofstack/discussions)
@@ -281,4 +281,4 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ---
 
-**SafeRL ProofStack** - Making RL systems provably safe, one proof at a time. 🛡️
+**SafeRL ProofStack** - Making RL systems provably safe, one proof at a time.
