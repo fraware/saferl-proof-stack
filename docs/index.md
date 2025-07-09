@@ -52,14 +52,6 @@ with open("attestation_bundle/compliance.json") as f:
 
 System design, components, and data flow diagrams.
 
-### [Safety Specifications](safety.md)
-
-How to write safety invariants and guard conditions.
-
-### [Lean4 Integration](lean.md)
-
-Formal proof generation and verification.
-
 ### [Compliance Mapping](compliance.md)
 
 **Regulator-grade evidence** with complete artifact lineage tracking.
