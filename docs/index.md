@@ -52,6 +52,10 @@ with open("attestation_bundle/compliance.json") as f:
 
 System design, components, and data flow diagrams.
 
+### [API Reference](api_reference.md)
+
+Complete API documentation for all classes, methods, and interfaces.
+
 ### [Compliance Mapping](compliance.md)
 
 **Regulator-grade evidence** with complete artifact lineage tracking.

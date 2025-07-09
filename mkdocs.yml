@@ -134,7 +134,7 @@ nav:
     - CartPole Safety: notebooks/cartpole_safety.md
     - Compressor Station: notebooks/compressor_station.md
     - Robotic Arm: notebooks/robotic_arm.md
-  - API Reference: api.md
+  - API Reference: api_reference.md
   - Contributing: contributing.md
 
 extra_css:
