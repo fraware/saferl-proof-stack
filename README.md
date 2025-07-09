@@ -198,7 +198,7 @@ proofstack bundle --mock
 
 ## Documentation
 
-- [API Reference](docs/api.md) - High Level API orchestration
+- [API Reference](docs/api_reference.md) - High Level API orchestration
 - [Architecture](docs/architecture.md) - High-level system architecture
 
 ## Safety Features
