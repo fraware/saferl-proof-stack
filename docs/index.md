@@ -56,14 +56,6 @@ System design, components, and data flow diagrams.
 
 **Regulator-grade evidence** with complete artifact lineage tracking.
 
-### [Examples](notebooks/)
-
-Jupyter notebooks for common use cases:
-
-- [CartPole Safety](notebooks/cartpole_safety.md)
-- [Compressor Station](notebooks/compressor_station.md)
-- [Robotic Arm](notebooks/robotic_arm.md)
-
 ## System Architecture
 
 ```mermaid
