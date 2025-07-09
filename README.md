@@ -198,17 +198,8 @@ proofstack bundle --mock
 
 ## Documentation
 
-### API Reference
-
-- [ProofPipeline](docs/api.md#proofpipeline) - Main orchestration class
-- [SpecGen](docs/api.md#specgen) - Lean4 specification generation
-- [ProverAPI](docs/api.md#proverapi) - Fireworks DeepSeek-Prover integration
-- [Attestation](docs/api.md#attestation) - Compliance artifact generation
-- [GuardGen](docs/api.md#guardgen) - Runtime guard code generation
-
-### Architecture
-
-- [System Design](docs/architecture.md) - High-level system architecture
+- [API Reference](docs/api.md) - High Level API orchestration
+- [Architecture](docs/architecture.md) - High-level system architecture
 
 ## Safety Features
 
