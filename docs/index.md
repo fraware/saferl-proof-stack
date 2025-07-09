@@ -4,7 +4,7 @@
 
 SafeRL ProofStack combines reinforcement learning with formal verification in Lean4 and generates comprehensive compliance artifacts with **complete artifact lineage** for safety-critical AI systems.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Install SafeRL ProofStack
 
@@ -46,11 +46,7 @@ with open("attestation_bundle/compliance.json") as f:
     print(f"Compliance rate: {compliance_data['summary']['compliance_rate']}%")
 ```
 
-## 📚 What You'll Learn
-
-### [CLI Reference](cli.md)
-
-Complete command-line interface documentation with examples.
+## What You'll Learn
 
 ### [Architecture](architecture.md)
 
@@ -64,7 +60,7 @@ How to write safety invariants and guard conditions.
 
 Formal proof generation and verification.
 
-### [Compliance Mapping](compliance.md) 🆕
+### [Compliance Mapping](compliance.md)
 
 **Regulator-grade evidence** with complete artifact lineage tracking.
 
@@ -76,7 +72,7 @@ Jupyter notebooks for common use cases:
 - [Compressor Station](notebooks/compressor_station.md)
 - [Robotic Arm](notebooks/robotic_arm.md)
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```mermaid
 graph TB
@@ -97,33 +93,33 @@ graph TB
     style F fill:#fff3e0
 ```
 
-## 🔒 Safety Features
+## Safety Features
 
-### H-0: Stabilization ✅
+### H-0: Stabilization
 
 - **100% test coverage** with property-based tests
 - **Static analysis gates** (ruff, mypy, pre-commit)
 - **Pinned toolchain versions** for deterministic builds
 
-### H-1: One-Command UX ✅
+### H-1: One-Command UX
 
 - **Zero-config CLI** with sensible defaults
 - **Async streaming** for real-time proof updates
 - **REST API** for programmatic access
 
-### H-2: Documentation & Examples ✅
+### H-2: Documentation & Examples
 
 - **Live documentation** with mkdocs
 - **Example notebooks** for common use cases
 - **Tutorial videos** (planned)
 
-### H-3: Multi-Algorithm Support ✅
+### H-3: Multi-Algorithm Support
 
 - **Safe SAC & DDPG** implementations
 - **Algorithm-specific Lean templates**
 - **Parametrized safety specifications**
 
-### H-4: Compliance Mapping & Artifact Lineage ✅ 🆕
+### H-4: Compliance Mapping & Artifact Lineage
 
 - **IEC 61508 SIL 2** compliance mapping
 - **IEC 62443 SL 2** cybersecurity compliance
@@ -131,7 +127,7 @@ graph TB
 - **Regulator-grade evidence** generation
 - **Interactive compliance reports**
 
-## 🎯 Use Cases
+## Use Cases
 
 ### Safety-Critical RL
 
@@ -151,7 +147,7 @@ graph TB
 - **Novel environments** with safety specifications
 - **Proof-of-concept** with compliance bundles
 
-## 🔐 Compliance Standards
+## Compliance Standards
 
 ### IEC 61508 SIL 2 - Functional Safety
 
@@ -168,7 +164,7 @@ graph TB
 | SR-3: System Integrity     | ✅ Compliant | Formal integrity proofs |
 | SR-10: Security Monitoring | ✅ Compliant | Runtime monitoring      |
 
-## 📦 Generated Artifacts
+## Generated Artifacts
 
 ### Core Artifacts
 
@@ -176,14 +172,14 @@ graph TB
 - **Runtime Guards** - C code for safety enforcement
 - **SBOM** - Software bill of materials
 
-### Compliance Artifacts 🆕
+### Compliance Artifacts
 
 - **compliance.json** - Complete artifact lineage mapping
 - **attestation.html** - Interactive compliance report
 - **attestation.pdf** - Printable regulatory summary
 - **Audit Trail** - Complete verification history
 
-## 🤝 Contributing
+## Contributing
 
 See our [Contributing Guide](../CONTRIBUTING.md) for:
 
@@ -192,7 +188,7 @@ See our [Contributing Guide](../CONTRIBUTING.md) for:
 - Testing requirements
 - Pull request process
 
-## 📞 Support
+## Support
 
 - **Issues**: [GitHub Issues](https://github.com/your-org/saferl-proofstack/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/your-org/saferl-proofstack/discussions)
@@ -200,4 +196,4 @@ See our [Contributing Guide](../CONTRIBUTING.md) for:
 
 ---
 
-**SafeRL ProofStack** - Making RL systems provably safe with regulator-grade evidence. 🛡️⚖️
+**SafeRL ProofStack** - Making RL systems provably safe with regulator-grade evidence.
