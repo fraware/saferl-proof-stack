@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\__init__.py
+# hypothesis_version: 6.135.26
+
+[65536, '.libzmq', '1', 'COPY_THRESHOLD', 'DRAFT_API', 'PATH', 'RTLD_LAZY', 'RTLD_LOCAL', 'RTLD_NOW', '_libzmq', 'conda-meta', 'darwin', 'draft', 'get_includes', 'getdlopenflags', 'include', 'pypy', 'pyzmq.libs', 'utils', 'win', 'zmq']

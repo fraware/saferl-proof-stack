@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\value\klass.py
+# hypothesis_version: 6.135.26
+
+['Type[%s]', '__', '__init__', 'class', 'function', 'metaclass', 'object', 'property', 'type']

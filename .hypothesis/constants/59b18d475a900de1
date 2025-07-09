@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\value\function.py
+# hypothesis_version: 6.135.26
+
+[' -> ', '(%s)', ', ', ': ', '<lambda>', '=', 'AsyncGenerator', 'BLUE', 'Coroutine', 'FunctionType', 'None', 'Return reachable: %s', 'Union[%s]', 'async_funcdef', 'async_stmt', 'decorated', 'decorator', 'for_stmt', 'funcdef', 'function', 'if_stmt', 'inf', 'keyword', 'lambdef', 'name', 'overload', 'suite', 'types', 'while_stmt', 'yield_arg']

@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\comm\base_comm.py
+# hypothesis_version: 6.135.26
+
+['BaseComm', 'Comm', 'CommManager', 'Current comms: %s', 'No such comm: %s', 'ascii', 'comm', 'comm-%s', 'comm_close', 'comm_id', 'comm_msg', 'comm_open', 'content', 'handle_close[%s](%s)', 'handle_msg[%s](%s)', 'post_execute', 'pre_execute', 'target_name']

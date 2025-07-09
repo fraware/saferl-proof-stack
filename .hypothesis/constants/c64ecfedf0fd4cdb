@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\completion\fuzzy_completer.py
+# hypothesis_version: 6.135.26
+
+['.*?', '.character', 'FuzzyCompleter', 'FuzzyWordCompleter', '[^\\s]+', '^', '^[a-zA-Z0-9_]*']

@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\sugar\frame.py
+# hypothesis_version: 6.135.26
+
+['CLIENT-SERVER', 'Frame', 'Message', 'RADIO-DISH', 'group', 'routing_id']

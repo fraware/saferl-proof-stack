@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\sugar\version.py
+# hypothesis_version: 6.135.26
+
+['%i.%i.%i', '+', '.', '25.1.2', '__revision__', '__version__', 'inf', 'pyzmq_version', 'pyzmq_version_info', 'zmq_version', 'zmq_version_info']

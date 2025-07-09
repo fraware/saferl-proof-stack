@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\magics\basic.py
+# hypothesis_version: 6.135.26
+
+['"', '%s%s:\n%s\n', "'", '**%s%s**::\n\n%s\n\n', '--cell', '--hide', '--line', '--params', '--show', '-c', '-l', '-p', 'Doctest mode is:', 'No documentation', 'NoColor', 'OFF', 'ON', 'Other', '_', 'brief', 'cell', 'doctest_mode', 'exception', 'false', 'filename', 'latex', 'line', 'mode', 'name', 'object inspector', 'off', 'on', 'r', 'rc_active_types', 'rc_pprint', 'rc_separate_in', 'rc_separate_out', 'rc_separate_out2', 'rest', 'shell', 'store_true', 'target', 'text/plain', 'true', 'user', 'utf-8', 'w', 'xmode', 'xmode ', 'xmode Plain']

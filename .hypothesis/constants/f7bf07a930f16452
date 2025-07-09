@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\kernelspec.py
+# hypothesis_version: 6.135.26
+
+['/\\', '7.0', 'Removing %s', '^[a-z0-9._\\-]+$', 'allowed_kernelspecs', 'argv', 'display_name', 'env', 'interrupt_mode', 'jupyter', 'kernel.json', 'kernels', 'language', 'message', 'metadata', 'python3', 'resource_dir', 'share', 'signal', 'spec', 'utf-8', 'whitelist']

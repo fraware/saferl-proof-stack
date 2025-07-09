@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+
+# Poetry
+poetry.lock
+
+# Lean
+lake-packages/
+build/
+.lean_cache/
+
+# Compliance artifacts
+attestation.html
+attestation.pdf
+sbom.spdx.json
+
+# Docker
+*.img
+*.tar
+
+# VSCode
+.vscode/ 

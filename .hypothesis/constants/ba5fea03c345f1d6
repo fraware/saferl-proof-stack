@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\pylabtools.py
+# hypothesis_version: 6.135.26
+
+['%s', ',', 'CocoaAgg', 'GTK', 'GTK3Agg', 'GTK3Cairo', 'GTK4Agg', 'GTK4Cairo', 'GTKAgg', 'GTKCairo', 'MacOSX', 'Qt4Agg', 'Qt5Agg', 'QtAgg', 'TkAgg', 'WX', 'WXAgg', 'WebAgg', '__version_info__', 'agg', 'application/pdf', 'ascii', 'auto', 'backend', 'bbox_inches', 'display', 'dpi', 'edgecolor', 'facecolor', 'figsize', 'figure.figsize', 'format', 'getfigs', 'gtk', 'gtk3', 'gtk4', 'height', 'image/jpeg', 'image/png', 'image/svg+xml', 'inline', 'interactive', 'ipympl', 'jpeg', 'jpg', 'nbAgg', 'nbagg', 'notebook', 'osx', 'pdf', 'png', 'png2x', 'ps', 'qt', 'qt4', 'qt5', 'qt5agg', 'qt6', 'retina', 'svg', 'tight', 'tk', 'utf-8', 'webagg', 'widget', 'width', 'wx']

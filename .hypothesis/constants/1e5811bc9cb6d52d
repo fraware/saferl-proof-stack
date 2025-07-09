@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\backend\__init__.py
+# hypothesis_version: 6.135.26
+
+['PYZMQ_BACKEND', 'PyPy', 'cffi', 'cython', 'zmq.backend.%s', 'zmq.backend.cffi', 'zmq.backend.cython']

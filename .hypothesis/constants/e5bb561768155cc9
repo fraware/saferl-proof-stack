@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\manager.py
+# hypothesis_version: 6.135.26
+
+[0.01, 0.1, 5.0, 100, 'Dict[str, Any]', 'F', 'ShutdownRequest', 'SigkillRequest', 'SigtermRequest', 'Starting kernel: %s', '\\{([A-Za-z0-9_]+)\\}', 'cache_ports', 'client_class', 'client_factory', 'cmd', 'connection_file', 'context', 'control', 'env', 'interrupt_request', 'kernel_id', 'kernel_name', 'kernel_spec_manager', 'message', 'new', 'owns_kernel', 'parent', 'prefix', 'python', 'python%i', 'python%i.%i', 'python2', 'python3', 'resource_dir', 'restart', 'shutdown_request', 'signal', 'tcp']

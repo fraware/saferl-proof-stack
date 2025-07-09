@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\api\refactoring\__init__.py
+# hypothesis_version: 6.135.26
+
+['(', ')', '.', ';', '<%s: %s>', '=', 'Cannot inline a %s', '__init__.py', '__init__.pyi', 'annassign', 'class', 'expr_stmt', 'function', 'module', 'namespace', 'newline', 'testlist_star_expr', 'trailer', 'w']

@@ -1,0 +1,7 @@
+-- pressure_bounds.lean.ejs
+-- EJS-style Lean4 template for pressure bounds
+
+theorem guard_preserves_safety
+  (σ : State) (a : Action)
+  (h_guard : guard σ a) : safe (step σ a) := by
+  -- <%= prover_hint %> 

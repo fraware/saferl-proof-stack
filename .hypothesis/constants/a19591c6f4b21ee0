@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\utils\coloransi.py
+# hypothesis_version: 6.135.26
+
+['\x01\x1b[%sm\x02', '\x01\x1b[0m\x02', '\nValid schemes: ', '\x1b[%sm', '\x1b[0m', "'', ", '0;30', '0;31', '0;32', '0;33', '0;34', '0;35', '0;36', '0;37', '1;30', '1;31', '1;32', '1;33', '1;34', '1;35', '1;36', '1;37', '5;30', '5;31', '5;32', '5;33', '5;34', '5;35', '5;36', '5;37', 'Black', 'BlinkBlack', 'BlinkBlue', 'BlinkCyan', 'BlinkGreen', 'BlinkLightGray', 'BlinkPurple', 'BlinkRed', 'BlinkYellow', 'Blue', 'Brown', 'ColorScheme', 'ColorSchemeTable', 'Cyan', 'DarkGray', 'Green', 'InputTermColors', 'LightBlue', 'LightCyan', 'LightGray', 'LightGreen', 'LightPurple', 'LightRed', 'Purple', 'Red', 'TERM', 'TermColors', 'White', 'Yellow', 'dumb', 'emacs', 'nt']

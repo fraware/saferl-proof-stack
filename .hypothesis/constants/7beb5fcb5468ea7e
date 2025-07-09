@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\formatted_text\base.py
+# hypothesis_version: 6.135.26
+
+['AnyFormattedText', 'FormattedText', 'FormattedText(%s)', 'MagicFormattedText', 'NotImplementedOrNone', 'OneStyleAndTextTuple', 'StyleAndTextTuples', 'Template', 'is_formatted_text', 'merge_formatted_text', 'to_formatted_text', '{0}', '{}']

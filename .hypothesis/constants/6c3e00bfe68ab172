@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\styles\__init__.py
+# hypothesis_version: 6.135.26
+
+['ANSI_COLOR_NAMES', 'Attrs', 'BaseStyle', 'DEFAULT_ATTRS', 'DummyStyle', 'DynamicStyle', 'NAMED_COLORS', 'Priority', 'Style', 'StyleTransformation', 'default_ui_style', 'merge_styles', 'parse_color']

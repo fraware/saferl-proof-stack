@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\history.py
+# hypothesis_version: 6.135.26
+
+[100, 16384, ' GROUP BY {0}', '%s#%s', '*', '-', '-%i', '-corrupt', '-corrupt-', '.', '0', ':', ':memory:', 'WHERE %s GLOB ?', '_i', '_i%s', '_ii', '_iii', 'connection_options', 'db', 'default', 'dir_hist', 'end', 'endsess', 'history', 'history.', 'history.sqlite', 'line>=?', 'new', 'sep', 'source', 'source_raw', 'start', 'startsess', '~']

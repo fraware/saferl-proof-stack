@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\terminal\prompts.py
+# hypothesis_version: 6.135.26
+
+['-', '... ', '...: ', '> ', '>>> ', 'In [', 'InputMode.', 'Out[', '[', '] ', ']: ', 'editing_mode', 'vi-']

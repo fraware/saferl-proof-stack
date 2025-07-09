@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\parso\python\prefix.py
+# hypothesis_version: 6.135.26
+
+['#', '#[^\\n\\r\\f]*', '$', '%s(%s, %s, %s)', '[ \\t]*', '\\', '\\\\\\r?\\n|\\\\\\r', '\\f', '\\r?\\n|\\r', 'backslash', 'bom', 'comment', 'formfeed', 'newline', 'spacing', 'utf-8']

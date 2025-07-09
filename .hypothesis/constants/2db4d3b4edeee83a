@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_core\paths.py
+# hypothesis_version: 6.135.26
+
+[122, 128, 234, 256, 384, 511, 3519, 32767, 32768, 65536, 131072, 983040, 1048576, '-', '.', '.jupyter', '.local', '/etc/jupyter', '/opt/homebrew', '/usr/share/jupyter', '0', '0.0', '1', 'APPDATA', 'AceCount', 'AclRevision', 'AclSize', 'CONDA_DEFAULT_ENV', 'CONDA_PREFIX', 'JUPYTER_CONFIG_DIR', 'JUPYTER_CONFIG_PATH', 'JUPYTER_DATA_DIR', 'JUPYTER_NO_CONFIG', 'JUPYTER_PATH', 'JUPYTER_RUNTIME_DIR', 'Jupyter', 'Library', 'PROGRAMDATA', 'Sbz1', 'Sbz2', 'UF_HIDDEN', 'XDG_DATA_HOME', 'advapi32', 'base', 'darwin', 'data', 'etc', 'false', 'geteuid', 'getuserbase', 'jupyter', 'jupyter-clean-cfg', 'n', 'no', 'nt', 'off', 'runtime', 'secur32', 'share', 'st_flags', 'true', 'utf-8', 'w', 'wb', 'win32', '~']

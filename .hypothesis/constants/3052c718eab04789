@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\magics\pylab.py
+# hypothesis_version: 6.135.26
+
+['--list', '--no-import-all', '-l', '?', 'auto', 'gui', 'store_true']

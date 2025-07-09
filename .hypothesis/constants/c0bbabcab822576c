@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\OneDrive\Documents\Documents Matéo\AFTER STANFORD\HC Fellow\saferl-proofstack\safe-rl-proofstack\proofstack\prover_api.py
+# hypothesis_version: 6.135.26
+
+[0.0, 120, 2048, 'Authorization', 'Content-Type', 'application/json', 'choices', 'content', 'max_tokens', 'message', 'messages', 'model', 'role', 'simp [h_guard]', 'stream', 'system', 'temperature', 'user']

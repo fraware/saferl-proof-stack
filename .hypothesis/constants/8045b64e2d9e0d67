@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\__init__.py
+# hypothesis_version: 6.135.26
+
+['3.12', 'builtins', 'classdef', 'execute: %s %s', 'expr_stmt', 'for_stmt', 'funcdef', 'import_from', 'import_name', 'namedexpr_test', 'param', 'power', 'replace', 'trailer', 'typing', 'utf-8', 'with_stmt']

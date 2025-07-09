@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\filters\cli.py
+# hypothesis_version: 6.135.26
+
+['ControlIsSearchable', 'EmacsInsertMode', 'EmacsMode', 'EmacsSelectionMode', 'HasArg', 'HasCompletions', 'HasFocus', 'HasSearch', 'HasSelection', 'HasValidationError', 'InEditingMode', 'InPasteMode', 'IsDone', 'IsMultiline', 'IsReadOnly', 'IsSearching', 'ViDigraphMode', 'ViInsertMode', 'ViInsertMultipleMode', 'ViMode', 'ViNavigationMode', 'ViReplaceMode', 'ViSelectionMode']

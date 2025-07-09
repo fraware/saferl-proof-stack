@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\terminal\embed.py
+# hypothesis_version: 6.135.26
+
+['%s:%s', '--exit', '--instance', '--yes', '-i', '-x', '-y', 'NoColor', '__name__', '_call_location_id', '_init_location_id', 'autoawait', 'colors', 'config', 'loop_runner', 'n', 'store_true', 'sync', 'unknown module', 'user_global_ns', 'using']

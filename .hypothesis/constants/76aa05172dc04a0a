@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\channels.py
+# hypothesis_version: 6.135.26
+
+[b'ping', 0.0, 1.0, 1000, 'tcp://%s:%i']

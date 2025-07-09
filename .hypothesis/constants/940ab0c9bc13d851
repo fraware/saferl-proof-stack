@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\value\module.py
+# hypothesis_version: 6.135.26
+
+['.', '.pyi', 'ModuleType', '__doc__', '__file__', '__name__', '__package__', 'extend_path(__path__', 'instance', 'module', 'types']

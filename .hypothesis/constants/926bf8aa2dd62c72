@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\localinterfaces.py
+# hypothesis_version: 6.135.26
+
+['-f', '.local', '/', '/sbin/ifconfig', '0.0.0.0', '127', '127.', '127.0.0.1', 'Failed to run {}: {}', 'addr', 'ifconfig', 'inet', 'ip', 'ipconfig', 'lo', 'localhost', 'nt', 'replace', 'utf8']

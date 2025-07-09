@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\gradual\typeshed.py
+# hypothesis_version: 6.135.26
+
+['(\\d+)\\.(\\d+)$', '-stubs', '.py', '.pyi', '2and3', '3', 'PathInfo', '__init__', '__init__.pyi', 'collections', 'django', 'django-stubs', 'i', 'macpath', 'ntpath', 'os', 'os2emxpath', 'path', 'path is_third_party', 'posixpath', 'socket', 'stdlib', 'third_party', 'typeshed', 'typing']

@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\sugar\socket.py
+# hypothesis_version: 6.135.26
+
+[100, 49152, 65536, ' closed', '%s:*', '...', ':', 'ST', 'Socket', 'Socket[bytes]', 'T', 'UNKNOWN', '_SocketContext[T]', '_repr_cls', 'ascii', 'bind', 'connect', 'group', 'replace', 'routing_id', 'str objects only', 'subscribe', 'type', 'unsubscribe', 'utf-8', 'utf8', 'win32', 'zmq.Context', 'zmq.Frame', 'zmq.MessageTracker', 'zmq.Socket']

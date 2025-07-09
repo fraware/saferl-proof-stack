@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\buffer.py
+# hypothesis_version: 6.135.26
+
+[0.3, '(\\s+|".*?"|\'.*?\')', '...', '/usr/bin/editor', '/usr/bin/emacs', '/usr/bin/nano', '/usr/bin/pico', '/usr/bin/vi', 'Buffer', 'CompletionState', 'Current, line %s', 'EDITOR', 'EditReadOnlyBuffer', 'INVALID', 'UNKNOWN', 'VALID', 'VISUAL', '^\\s*', '_T', 'indent', 'rb', 'reshape_text', 'unindent', 'utf-8', 'w']

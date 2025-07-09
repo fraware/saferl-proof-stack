@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\lexers\pygments.py
+# hypothesis_version: 6.135.26
+
+[100, 500, '<[/a-zA-Z]', 'HTML', 'JavaScript', 'PygmentsLexer', 'Python', 'Python 3', 'RegexSync', 'SyncFromStart', 'SyntaxSync', '\\bfunction\\b', '^', '^\\s*(class|def)\\s+', 'class:']

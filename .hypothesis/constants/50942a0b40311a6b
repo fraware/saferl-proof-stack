@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\sys_path.py
+# hypothesis_version: 6.135.26
+
+['#!', '(', '+=', '-stubs$', '.', '.pyi', '/', '=', '__init__', 'append', 'atom_expr', 'bin', 'buildout.cfg', 'expr_stmt', 'insert', 'name', 'path', 'power', 'python', 'r', 'sys', 'trailer']

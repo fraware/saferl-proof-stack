@@ -1,0 +1,188 @@
+# IEC 62443 Industrial Cybersecurity Standard
+# OpenControl schema for SafeRL ProofStack compliance mapping
+# Based on IEC 62443-3-3:2013 for system security requirements and security levels
+
+standards:
+  IEC-62443-SL2:
+    name: "IEC 62443 Industrial Cybersecurity - Security Level 2"
+    description: "International standard for security of industrial automation and control systems"
+    
+    # SL 2 System Security Requirements (IEC 62443-3-3:2013)
+    SR-1:
+      name: "Identification and Authentication Control"
+      description: "System shall provide identification and authentication control for all users and devices"
+      
+    SR-2:
+      name: "Use Control"
+      description: "System shall control use of system resources and prevent unauthorized access"
+      
+    SR-3:
+      name: "System Integrity"
+      description: "System shall maintain integrity of system data and prevent unauthorized modifications"
+      
+    SR-4:
+      name: "Data Confidentiality"
+      description: "System shall protect confidentiality of sensitive data during transmission and storage"
+      
+    SR-5:
+      name: "Restricted Data Flow"
+      description: "System shall restrict data flow to authorized communication channels and prevent unauthorized data transfer"
+      
+    SR-6:
+      name: "Timely Response to Events"
+      description: "System shall provide timely response to security events and anomalies"
+      
+    SR-7:
+      name: "Resource Availability"
+      description: "System shall ensure availability of critical resources and prevent denial of service"
+      
+    SR-8:
+      name: "Secure Communication"
+      description: "System shall provide secure communication channels and protect data in transit"
+      
+    SR-9:
+      name: "Secure Configuration"
+      description: "System shall maintain secure configuration and prevent unauthorized changes"
+      
+    SR-10:
+      name: "Security Monitoring"
+      description: "System shall provide security monitoring and logging capabilities"
+
+    # SL 2 Component Security Requirements
+    CR-1:
+      name: "Component Identification and Authentication"
+      description: "Components shall provide identification and authentication capabilities"
+      
+    CR-2:
+      name: "Component Use Control"
+      description: "Components shall control use of component resources"
+      
+    CR-3:
+      name: "Component Integrity"
+      description: "Components shall maintain integrity of component data and code"
+      
+    CR-4:
+      name: "Component Data Confidentiality"
+      description: "Components shall protect confidentiality of component data"
+      
+    CR-5:
+      name: "Component Restricted Data Flow"
+      description: "Components shall restrict data flow to authorized channels"
+      
+    CR-6:
+      name: "Component Timely Response"
+      description: "Components shall provide timely response to security events"
+      
+    CR-7:
+      name: "Component Resource Availability"
+      description: "Components shall ensure availability of component resources"
+      
+    CR-8:
+      name: "Component Secure Communication"
+      description: "Components shall provide secure communication capabilities"
+      
+    CR-9:
+      name: "Component Secure Configuration"
+      description: "Components shall maintain secure configuration"
+      
+    CR-10:
+      name: "Component Security Monitoring"
+      description: "Components shall provide security monitoring capabilities"
+
+    # SL 2 Zone Security Requirements
+    ZR-1:
+      name: "Zone Access Control"
+      description: "Zone shall implement access control to prevent unauthorized access"
+      
+    ZR-2:
+      name: "Zone Communication Control"
+      description: "Zone shall control communication between internal and external systems"
+      
+    ZR-3:
+      name: "Zone Data Protection"
+      description: "Zone shall protect data within the zone boundaries"
+      
+    ZR-4:
+      name: "Zone Monitoring"
+      description: "Zone shall provide monitoring and logging of zone activities"
+      
+    ZR-5:
+      name: "Zone Incident Response"
+      description: "Zone shall provide incident response capabilities"
+
+    # SL 2 Conduit Security Requirements
+    CDR-1:
+      name: "Conduit Access Control"
+      description: "Conduit shall implement access control for data transmission"
+      
+    CDR-2:
+      name: "Conduit Data Protection"
+      description: "Conduit shall protect data during transmission"
+      
+    CDR-3:
+      name: "Conduit Monitoring"
+      description: "Conduit shall provide monitoring of data transmission"
+      
+    CDR-4:
+      name: "Conduit Incident Response"
+      description: "Conduit shall provide incident response for transmission issues"
+
+    # SL 2 Security Management Requirements
+    SMR-1:
+      name: "Security Policy Management"
+      description: "System shall support security policy management and enforcement"
+      
+    SMR-2:
+      name: "Security Risk Assessment"
+      description: "System shall support security risk assessment and management"
+      
+    SMR-3:
+      name: "Security Training and Awareness"
+      description: "System shall support security training and awareness programs"
+      
+    SMR-4:
+      name: "Security Incident Management"
+      description: "System shall support security incident management and response"
+      
+    SMR-5:
+      name: "Security Change Management"
+      description: "System shall support security change management and control"
+      
+    SMR-6:
+      name: "Security Compliance Management"
+      description: "System shall support security compliance management and reporting"
+
+    # SL 2 Documentation Requirements
+    DR-1:
+      name: "Security Requirements Documentation"
+      description: "All security requirements shall be documented and traceable"
+      
+    DR-2:
+      name: "Security Design Documentation"
+      description: "Security design shall be documented and reviewed"
+      
+    DR-3:
+      name: "Security Test Documentation"
+      description: "Security testing shall be documented and demonstrate verification"
+      
+    DR-4:
+      name: "Security Operation Documentation"
+      description: "Security operations shall be documented and maintained"
+      
+    DR-5:
+      name: "Security Incident Documentation"
+      description: "Security incidents shall be documented and analyzed"
+
+# SL 2 Compliance Levels
+compliance_levels:
+  SL-2:
+    name: "Security Level 2"
+    description: "SL 2 provides enhanced security measures for industrial control systems"
+    threat_level: "Moderate"
+    risk_level: "Medium"
+    security_measures: "Enhanced"
+    monitoring_requirements: "Continuous"
+    incident_response: "Automated"
+    access_control: "Role-based"
+    encryption_requirements: "Strong"
+    audit_requirements: "Comprehensive" 

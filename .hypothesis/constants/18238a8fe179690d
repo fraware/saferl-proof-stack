@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\compiled\getattr_static.py
+# hypothesis_version: 6.135.26
+
+['__delete__', '__dict__', '__get__', '__mro__', '__set__']

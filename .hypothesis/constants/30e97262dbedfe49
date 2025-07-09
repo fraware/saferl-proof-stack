@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\utils\wildcard.py
+# hypothesis_version: 6.135.26
+
+['$', '%s.%s', '*', '.', '.*', '?', 'Type', '_', '__', 'all', 'lambda']

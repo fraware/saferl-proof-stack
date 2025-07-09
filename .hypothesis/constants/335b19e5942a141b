@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\traitlets\config\loader.py
+# hypothesis_version: 6.135.26
+
+['*', '-', '--', '.', '<deprecated>', '=', '?', 'Invalid flag: %r', 'Using default logger', '_', '__', '__DASH__', '__DOT__', '_argcomplete_kwargs', '_flags', 'action', 'alias', 'append', 'argcompleter', 'const', 'dest', 'dict[str, t.Any]', 'exec', 'extend', 'extra_args', 'flag', 'from_string_list', 'inserts', 'metavar', 'multiplicity', 'nargs', 'prepend', 'rb', 'type', 'update', 'version', 'w']

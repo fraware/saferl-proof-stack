@@ -1,0 +1,128 @@
+# IEC 61508 Functional Safety Standard - SIL 2 Subset
+# OpenControl schema for SafeRL ProofStack compliance mapping
+# Based on IEC 61508-3:2010 for software safety requirements
+
+standards:
+  IEC-61508-SIL2:
+    name: "IEC 61508 Functional Safety - SIL 2 Level"
+    description: "International standard for functional safety of electrical/electronic/programmable electronic safety-related systems"
+    
+    # SIL 2 Software Safety Requirements (IEC 61508-3:2010)
+    SW-1:
+      name: "Software Safety Requirements Specification"
+      description: "Software safety requirements shall be specified and shall include all safety functions and safety integrity requirements"
+      
+    SW-2:
+      name: "Software Architecture Design"
+      description: "Software architecture shall be designed to support the safety requirements and provide adequate separation of concerns"
+      
+    SW-3:
+      name: "Software Module Design"
+      description: "Software modules shall be designed to implement the safety functions with appropriate error detection and handling"
+      
+    SW-4:
+      name: "Software Module Testing"
+      description: "Software modules shall be tested to verify correct implementation of safety functions and error handling"
+      
+    SW-5:
+      name: "Software Integration Testing"
+      description: "Software integration shall be tested to verify correct interaction between modules and safety functions"
+      
+    SW-6:
+      name: "Software Validation Testing"
+      description: "Software validation shall demonstrate that the software meets the specified safety requirements"
+      
+    SW-7:
+      name: "Software Verification"
+      description: "Software verification shall use appropriate techniques to demonstrate correctness of safety functions"
+      
+    SW-8:
+      name: "Software Configuration Management"
+      description: "Software configuration management shall ensure traceability and control of all software artifacts"
+      
+    SW-9:
+      name: "Software Quality Assurance"
+      description: "Software quality assurance shall ensure adherence to safety standards and procedures"
+      
+    SW-10:
+      name: "Software Safety Manual"
+      description: "Software safety manual shall provide instructions for safe operation and maintenance"
+
+    # SIL 2 Hardware Safety Requirements
+    HW-1:
+      name: "Hardware Safety Requirements Specification"
+      description: "Hardware safety requirements shall be specified and shall include all safety functions and safety integrity requirements"
+      
+    HW-2:
+      name: "Hardware Architecture Design"
+      description: "Hardware architecture shall be designed to support the safety requirements and provide adequate fault tolerance"
+      
+    HW-3:
+      name: "Hardware Fault Detection"
+      description: "Hardware shall include appropriate fault detection mechanisms for SIL 2 level"
+      
+    HW-4:
+      name: "Hardware Testing"
+      description: "Hardware shall be tested to verify correct implementation of safety functions"
+
+    # SIL 2 System Integration Requirements
+    SI-1:
+      name: "System Integration Planning"
+      description: "System integration shall be planned to ensure proper integration of hardware and software components"
+      
+    SI-2:
+      name: "System Integration Testing"
+      description: "System integration shall be tested to verify correct operation of the complete safety system"
+      
+    SI-3:
+      name: "System Validation"
+      description: "System validation shall demonstrate that the complete system meets the specified safety requirements"
+
+    # SIL 2 Operation and Maintenance Requirements
+    OM-1:
+      name: "Operation Procedures"
+      description: "Operation procedures shall be established and documented for safe operation of the system"
+      
+    OM-2:
+      name: "Maintenance Procedures"
+      description: "Maintenance procedures shall be established and documented for safe maintenance of the system"
+      
+    OM-3:
+      name: "Modification Control"
+      description: "Modification control procedures shall ensure that changes do not compromise safety functions"
+      
+    OM-4:
+      name: "Safety Manual"
+      description: "Safety manual shall provide comprehensive instructions for safe operation and maintenance"
+
+    # SIL 2 Documentation Requirements
+    DOC-1:
+      name: "Safety Requirements Documentation"
+      description: "All safety requirements shall be documented and traceable"
+      
+    DOC-2:
+      name: "Design Documentation"
+      description: "Design documentation shall be complete and accurate"
+      
+    DOC-3:
+      name: "Test Documentation"
+      description: "Test documentation shall demonstrate verification of all safety requirements"
+      
+    DOC-4:
+      name: "Operation Documentation"
+      description: "Operation documentation shall provide clear instructions for safe operation"
+      
+    DOC-5:
+      name: "Maintenance Documentation"
+      description: "Maintenance documentation shall provide clear instructions for safe maintenance"
+
+# SIL 2 Compliance Levels
+compliance_levels:
+  SIL-2:
+    name: "Safety Integrity Level 2"
+    description: "SIL 2 requires a probability of failure on demand (PFD) between 10^-2 and 10^-3"
+    risk_reduction_factor: "100 to 1000"
+    target_failure_measure: "PFDavg < 10^-2"
+    systematic_capability: "SC 2"
+    hardware_fault_tolerance: "HFT 0 or 1"
+    safe_failure_fraction: "SFF 60-90%" 

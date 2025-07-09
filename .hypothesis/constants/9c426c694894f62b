@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\ultratb.py
+# hypothesis_version: 6.135.26
+
+[10000, '\nKeyboardInterrupt', '%%s %s= %%s%s', '%*s', '%s\n', '%s\n%s%s', '%s    %s%s\n', '%s   (...)%s\n', '%s  %s%s\n', '%s %s\n', '%s instance', '%s%%s%s', '%s%s', '%s%s%s', '%s%s%s\n%s%s%s\n%s', '%s%s%s %s', '%s%s%s %s%s', '%s%s:%s %s\n', '%s%s^%s\n', '-', '.', '.py', ': ', '<module>', '<string>', '=%s', '>\nValid modes: ', '?', 'Context', 'File', 'IPython', 'Linux', 'Minimal', 'No file....', 'NoColor', 'Plain', 'Python ', 'Raw frame', 'Verbose', '__cause__', '__class__', '__context__', '__name__', '__notes__', '__suppress_context__', '__tracebackhide__', 'bg:ansiyellow', 'code', 'default', 'description', 'filename', 'flush', 'frame', 'last_exc', 'lineno', 'nocolor', 'note', 'pdb', 'r', 'str', 'tb', 'tb_next', 'unknown', 'utf-8', 'write', '{}{}', '{}{}{}: {}']

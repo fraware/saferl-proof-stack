@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\_future.py
+# hypothesis_version: 6.135.26
+
+[0.001, 'RCVTIMEO', 'SNDTIMEO', 'T', '_AsyncSocket', '_zmq.Socket', 'cancel', 'copy', 'flags', 'poll', 'recv', 'recv_multipart', 'send', 'send_multipart', 'track', 'utf-8']

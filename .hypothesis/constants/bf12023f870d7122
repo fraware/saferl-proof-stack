@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\magics\packaging.py
+# hypothesis_version: 6.135.26
+
+['"', '--name', '--prefix', '--y', '--yes', '-m', '-n', '-p', '-y', 'command', 'conda', 'conda-meta', 'history', 'install', 'kernel', 'list', 'mamba', 'micromamba', 'pip', 'remove', 'uninstall', 'update', 'upgrade', 'utf-8', 'win32']

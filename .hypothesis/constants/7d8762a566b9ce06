@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\key_binding\bindings\scroll.py
+# hypothesis_version: 6.135.26
+
+['scroll_backward', 'scroll_forward', 'scroll_half_page_up', 'scroll_one_line_down', 'scroll_one_line_up']

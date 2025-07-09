@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\output\__init__.py
+# hypothesis_version: 6.135.26
+
+['ColorDepth', 'DummyOutput', 'Output', 'create_output']

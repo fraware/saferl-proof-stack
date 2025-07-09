@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\zmq\utils\jsonapi.py
+# hypothesis_version: 6.135.26
+
+['dumps', 'loads', 'utf8']

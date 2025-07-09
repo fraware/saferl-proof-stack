@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\connect.py
+# hypothesis_version: 6.135.26
+
+[b'\x00', 1000, '%s-%i', '%s_port', '*', '*%s*', '-ipc', '.', '.json', '0.0.0.0', 'Connecting to: %s', 'KernelConnectionInfo', 'LocalPortCache', 'S_ISVTX', 'control', 'control_port', 'find_connection_file', 'hb', 'hb_port', 'hmac-sha256', 'iopub', 'iopub_port', 'ip', 'ipc', 'kernel-*.json', 'kernel-ipc', 'kernel_name', 'key', 'new', 'session', 'shell', 'shell_port', 'signature_scheme', 'stdin', 'stdin_port', 'tcp', 'tcp://%s:%i', 'transport', 'tunnel_to_kernel']

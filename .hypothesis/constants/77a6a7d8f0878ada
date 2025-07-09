@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\compiled\__init__.py
+# hypothesis_version: 6.135.26
+
+['<%s: %s>', 'False', 'None', 'True', 'access_handle', 'execute_operation', 'get_safe_value', 'is_compiled', 'negate', 'py__bool__', 'str', 'tensorflow.']

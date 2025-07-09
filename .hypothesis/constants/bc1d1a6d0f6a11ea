@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\provisioning\local_provisioner.py
+# hypothesis_version: 6.135.26
+
+[0.1, 'JPY_SESSION_NAME', 'SIGKILL', 'SIGTERM', 'control_port', 'env', 'extra_arguments', 'getpgid', 'hb_port', 'iopub_port', 'ip', 'kernel_id', 'killpg', 'pgid', 'pid', 'shell_port', 'stderr', 'stdin', 'stdin_port', 'stdout', 'tcp', 'win32']

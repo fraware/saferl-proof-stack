@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\key_binding\bindings\auto_suggest.py
+# hypothesis_version: 6.135.26
+
+['([^\\s/]+(?:\\s+|/))', 'c-e', 'c-f', 'escape', 'f', 'right']

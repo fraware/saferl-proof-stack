@@ -1,0 +1,11 @@
+environment: cartpole
+guard:
+- "|\u03C3.cart_position| \u2264 2.3"
+- "|\u03C3.pole_angle| \u2264 0.2"
+- "|a.force| \u2264 10.0"
+invariants:
+- "|\u03C3.cart_position| \u2264 2.4"
+- "|\u03C3.pole_angle| \u2264 0.2095"
+lemmas:
+- position_step_bound
+- angle_step_preserved

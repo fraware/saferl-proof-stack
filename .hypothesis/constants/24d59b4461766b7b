@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jupyter_client\session.py
+# hypothesis_version: 6.135.26
+
+[b'<IDS|MSG>', 1024, '-', 'Session', 'Session.keyfile', 'Session.session', 'Session.username', 'USER', 'Unsigned Message', 'a', 'ascii', 'buffers', 'content', 'contiguous', 'header', 'hi', 'hmac-', 'hmac-sha256', 'ident', 'json', 'key', 'keyfile', 'logname', 'metadata', 'msg_id', 'msg_type', 'new', 'no-secure', 'pack', 'packer', 'parent_header', 'pickle', 'rb', 'replace', 'secure', 'session', 'signature_scheme', 'surrogateescape', 't', 'tracker', 'unpack', 'unpacker', 'user', 'username', 'utf8', 'zmq.Context']

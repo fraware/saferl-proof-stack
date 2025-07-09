@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\jedi\inference\gradual\stub_value.py
+# hypothesis_version: 6.135.26
+
+['_', '__', 'dotted_as_name', 'import_as_name', 'import_from', 'import_name']

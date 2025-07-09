@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\IPython\core\debugger.py
+# hypothesis_version: 6.135.26
+
+[999, '\n-> ', '  -', '%%s%s%%s %s%%s', '%%s%s%%s %s%%s%s', '%*s', '%s%%s%s', '%s%%s%s%%s%s', '%s%s', '%s(%s)%s\n', '(%s) ', '()', '(?<=\\n)\\s+', '-', '.', '...', '0', '1', ':', ': ', '<lambda>', '<string>', '>', '> ', '?', '??', 'Globals', 'LightBG', 'Linux', 'Locals', 'Neutral', 'Newest frame', 'NoColor', 'Oldest frame', '__args__', '__debuggerskip__', '__ipython_bottom__', '__main__', '__return__', '__tracebackhide__', '_exec_filename', 'current predicates:', 'debuggerskip', 'f_back', 'false', 'initial_frame', 'ipdb> ', 'ipython_internal', 'list', 'longlist', 'no', 'old_all_completions', 'pdef', 'pdoc', 'pfile', 'pinfo', 'pinfo ', 'pinfo2', 'pinfo2 ', 'psource', 'readonly', 'str', 'tbhide', 'true', 'yes']

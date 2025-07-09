@@ -1,0 +1,4 @@
+# file: C:\Users\mateo\AppData\Roaming\Python\Python312\site-packages\prompt_toolkit\document.py
+# hypothesis_version: 6.135.26
+
+['()', '([^\\s]+)', '0123456789_', '<>', 'Document', '[]', '^([^\\s]+)', '^([^\\s]+\\s*)', '_DocumentCache', '_cache', '_cursor_position', '_selection', '_text', '{}']
