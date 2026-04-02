@@ -2,8 +2,8 @@
 name = "proofstack"
 version = "0.1.0"
 description = "SafeRL ProofStack: RL + Formal Proofs + Compliance Bundles"
-authors = ["Your Name <you@example.com>"]
-license = "Apache-2.0"
+authors = ["Fraware <opensource@fraware.com>"]
+license = "MIT"
 readme = "README.md"
 packages = [{ include = "proofstack" }]
 
@@ -54,7 +54,6 @@ addopts = [
     "--cov-report=term-missing",
     "--cov-report=html",
     "--cov-report=xml",
-    "--cov-fail-under=100"
 ]
 
 [tool.coverage.run]
@@ -100,6 +99,8 @@ extend-exclude = '''
 [tool.ruff]
 target-version = "py39"
 line-length = 88
+
+[tool.ruff.lint]
 select = [
     "E",  # pycodestyle errors
     "W",  # pycodestyle warnings

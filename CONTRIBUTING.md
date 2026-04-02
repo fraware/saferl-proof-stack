@@ -26,7 +26,7 @@ Thank you for your interest in contributing!
 
 - All contributors must sign off on their commits using the DCO:
   - `git commit -s`
-- By signing off, you agree to the [Apache 2.0 License](LICENSE).
+- By signing off, you agree to the [MIT License](LICENSE).
 
 ## Review Process
 

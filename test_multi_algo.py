@@ -189,6 +189,14 @@ def main():
 
 
 if __name__ == "__main__":
+    # Avoid UnicodeEncodeError on Windows consoles (cp1252) during CI-style smoke runs.
+    try:
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8")
+        if hasattr(sys.stderr, "reconfigure"):
+            sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
     success = main()
     if not success:
         sys.exit(1)

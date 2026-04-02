@@ -1,20 +1,23 @@
 """FastAPI server for SafeRL ProofStack REST API."""
 
-import os
 import tempfile
-import shutil
 from pathlib import Path
-from typing import Optional, Dict, Any
-import yaml
+from typing import Any, Optional
 
-from fastapi import FastAPI, HTTPException, BackgroundTasks
-from fastapi.responses import FileResponse
-from pydantic import BaseModel
 import uvicorn
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
+from pydantic import BaseModel, Field
 
-from .cli import init, train, bundle, check_fireworks_key
+from .cli import check_fireworks_key, init, train
+from .contracts import SUPPORTED_ALGORITHMS, load_safety_spec
+from .errors import BundleNotFoundError, ValidationError
+from .observability import configure_logging, get_logger, log_event
 from .pipeline import ProofPipeline
 
+configure_logging()
+LOGGER = get_logger(__name__)
+BUNDLE_REGISTRY: dict[str, Path] = {}
 
 app = FastAPI(
     title="SafeRL ProofStack API",
@@ -24,22 +27,22 @@ app = FastAPI(
 
 
 class InitRequest(BaseModel):
-    env_name: str
+    env_name: str = Field(..., min_length=1, max_length=128)
     output_dir: Optional[str] = "./my_env"
 
 
 class TrainRequest(BaseModel):
-    algo: str = "ppo"
-    timesteps: int = 10000
-    env: str = "CartPole-v1"
+    algo: str = Field(default="ppo")
+    timesteps: int = Field(default=10000, ge=1, le=10_000_000)
+    env: str = Field(default="CartPole-v1", min_length=1, max_length=128)
     wandb: bool = False
     output_dir: str = "./rl"
 
 
 class BundleRequest(BaseModel):
-    spec_file: str = "safety_spec.yaml"
+    spec_file: str = Field(default="safety_spec.yaml", min_length=1)
     output_dir: str = "./dist"
-    mock: bool = False
+    algorithm: str = Field(default="ppo")
 
 
 class SafetySpec(BaseModel):
@@ -77,18 +80,22 @@ async def init_project(request: InitRequest):
 
         return {
             "status": "success",
-            "message": f"Project initialized successfully",
+            "message": "Project initialized successfully",
             "project_dir": str(project_dir),
             "temp_dir": temp_dir,
         }
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @app.post("/train")
-async def train_agent(request: TrainRequest, background_tasks: BackgroundTasks):
+async def train_agent(request: TrainRequest):
     """Train an RL agent."""
     try:
+        if request.algo not in SUPPORTED_ALGORITHMS:
+            raise HTTPException(status_code=422, detail="Unsupported algorithm")
         # Create output directory
         output_path = Path(request.output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
@@ -113,78 +120,61 @@ async def train_agent(request: TrainRequest, background_tasks: BackgroundTasks):
 
         return {
             "status": "success",
-            "message": f"Agent trained successfully",
+            "message": "Agent trained successfully",
             "model_file": str(model_files[0]),
             "algorithm": request.algo,
             "environment": request.env,
             "timesteps": request.timesteps,
         }
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @app.post("/bundle")
 async def generate_bundle(request: BundleRequest):
     """Generate safety proof bundle."""
     try:
-        # Check API key if not using mock
-        if not request.mock:
-            api_key = check_fireworks_key()
-            if not api_key:
-                raise HTTPException(
-                    status_code=400,
-                    detail="FIREWORKS_API_KEY environment variable not set",
-                )
-        else:
-            api_key = "mock_key"
-
-        # Load safety specification
-        spec_path = Path(request.spec_file)
-        if not spec_path.exists():
+        api_key = check_fireworks_key()
+        if not api_key:
             raise HTTPException(
-                status_code=404,
-                detail=f"Specification file not found: {request.spec_file}",
+                status_code=400,
+                detail="FIREWORKS_API_KEY environment variable not set",
             )
-
-        with open(spec_path) as f:
-            spec_data = yaml.safe_load(f)
-
-        # Create mock environment and spec objects
-        class MockEnv:
-            def __init__(self):
-                self.observation_space = None
-                self.action_space = None
-
-        class MockSafetySpec:
-            def __init__(self, data):
-                self.invariants = data.get("invariants", [])
-                self.guard = data.get("guard", [])
-                self.lemmas = data.get("lemmas", [])
-
-        env = MockEnv()
-        spec = MockSafetySpec(spec_data)
+        if request.algorithm not in SUPPORTED_ALGORITHMS:
+            raise HTTPException(status_code=422, detail="Unsupported algorithm")
+        spec = load_safety_spec(Path(request.spec_file))
 
         # Create pipeline and run
-        pipeline = ProofPipeline(env, spec, api_key)
-        bundle = pipeline.run()
+        pipeline = ProofPipeline(None, spec, api_key)
+        bundle = pipeline.run(algo=request.algorithm)
+        bundle_id = f"bundle-{len(BUNDLE_REGISTRY) + 1}"
+        BUNDLE_REGISTRY[bundle_id] = Path(bundle.path)
+        log_event(LOGGER, "bundle_generated", bundle_id=bundle_id, bundle_path=bundle.path)
 
         return {
             "status": "success",
             "message": "Bundle generated successfully",
+            "bundle_id": bundle_id,
             "bundle_path": bundle.path,
             "artifacts": list_artifacts(bundle.path),
         }
+    except ValidationError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @app.get("/bundle/{bundle_id}")
 async def download_bundle(bundle_id: str, artifact: Optional[str] = None):
     """Download bundle artifacts."""
     try:
-        # In a real implementation, you'd look up the bundle by ID
-        # For now, we'll assume bundle_id is a path
-        bundle_path = Path(bundle_id)
+        bundle_path = BUNDLE_REGISTRY.get(bundle_id)
+        if bundle_path is None:
+            raise BundleNotFoundError(f"Unknown bundle id: {bundle_id}")
 
         if not bundle_path.exists():
             raise HTTPException(status_code=404, detail="Bundle not found")
@@ -203,8 +193,12 @@ async def download_bundle(bundle_id: str, artifact: Optional[str] = None):
         else:
             # List all artifacts
             return {"bundle_id": bundle_id, "artifacts": list_artifacts(bundle_path)}
+    except BundleNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
 @app.post("/spec")
@@ -218,19 +212,20 @@ async def create_spec(spec: SafetySpec):
         # Generate spec file
         spec_file = specs_dir / f"{spec.environment}_spec.yaml"
 
-        with open(spec_file, "w") as f:
-            yaml.dump(spec.dict(), f, default_flow_style=False)
+        spec_file.write_text(spec.model_dump_json(indent=2), encoding="utf-8")
 
         return {
             "status": "success",
             "message": "Safety specification created",
             "spec_file": str(spec_file),
         }
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=str(e)) from e
 
 
-def list_artifacts(bundle_path: str) -> Dict[str, Any]:
+def list_artifacts(bundle_path: str) -> dict[str, Any]:
     """List artifacts in a bundle."""
     bundle_dir = Path(bundle_path)
     if not bundle_dir.exists():

@@ -28,8 +28,8 @@ class ProofPipeline:
         Initialize the proof pipeline.
 
         Args:
-            env: Gymnasium environment
-            safety_spec: Dictionary containing safety specifications
+            env: Gymnasium environment (may be None for spec-only CLI flows)
+            safety_spec: Dict or object with ``invariants`` / ``guard`` / ``lemmas`` (e.g. ``SpecGen`` or YAML-loaded spec)
             api_key: Fireworks API key for proof generation
             prover: Prover model to use (default: "fireworks/deepseek-prover-v2")
         """
@@ -510,7 +510,7 @@ proofstack train [--algo <algorithm>] [--timesteps <timesteps>] [--env <environm
 Generate safety bundle with proofs and compliance artifacts.
 
 ```bash
-proofstack bundle [--spec <spec_file>] [--output <output_dir>] [--watch] [--mock] [--algo <algorithm>] [--reuse-cache/--no-reuse-cache]
+proofstack bundle [--spec <spec_file>] [--output <output_dir>] [--watch] [--algo <algorithm>] [--reuse-cache/--no-reuse-cache]
 ```
 
 **Options:**
@@ -518,9 +518,10 @@ proofstack bundle [--spec <spec_file>] [--output <output_dir>] [--watch] [--mock
 - `--spec, -s`: Safety specification file (default: "safety_spec.yaml")
 - `--output, -o`: Output directory (default: "./dist")
 - `--watch, -w`: Watch proof generation in real-time
-- `--mock`: Use mock proofs (no API calls)
 - `--algo, -a`: Algorithm for Lean template (ppo, sac, ddpg) (default: "ppo")
 - `--reuse-cache/--no-reuse-cache`: Reuse cached proof sketches (default: on)
+
+`bundle` requires `FIREWORKS_API_KEY` (see [Environment Variables](#environment-variables)).
 
 #### version
 
@@ -532,24 +533,26 @@ proofstack version
 
 ## Environment Variables
 
-- `FIREWORKS_API_KEY`: Fireworks API key for proof generation
+- `FIREWORKS_API_KEY`: Fireworks API key for proof generation (required for `proofstack bundle` and for pipeline runs that call the prover)
 
 ## Error Handling
 
-The library provides comprehensive error handling:
+The library uses typed errors and explicit failure modes:
 
-- **API Errors**: Network and API errors are caught and logged
-- **File Errors**: File operations include proper error handling
-- **Validation**: Input validation for all public methods
-- **Fallbacks**: Mock implementations for testing without API access
+- **API errors**: Network and provider failures surface as structured errors (no synthetic proof substitution in production paths)
+- **File errors**: Missing specs or invalid paths fail with clear validation messages
+- **Validation**: Public entry points validate inputs (algorithms, safety specs, placeholders in generated Lean)
+- **Testing**: Use pytest with appropriate fixtures and `reuse_cache` / test doubles in `tests/` rather than a separate “mock bundle” mode in the CLI
 
 ## Examples
 
 ### Basic Usage
 
 ```python
-from proofstack import ProofPipeline
+import os
+
 import gymnasium as gym
+from proofstack import ProofPipeline
 
 # Create environment
 env = gym.make("CartPole-v1")
@@ -558,13 +561,12 @@ env = gym.make("CartPole-v1")
 safety_spec = {
     "invariants": ["|σ.cart_position| ≤ 2.4", "|σ.pole_angle| ≤ 0.2095"],
     "guard": ["|σ.cart_position| ≤ 2.3", "|σ.pole_angle| ≤ 0.2", "|a.force| ≤ 10.0"],
-    "lemmas": ["position_step_bound", "angle_step_preserved"]
+    "lemmas": ["position_step_bound", "angle_step_preserved"],
 }
 
-# Create pipeline
-pipeline = ProofPipeline(env, safety_spec, api_key="your-api-key")
+api_key = os.environ["FIREWORKS_API_KEY"]
+pipeline = ProofPipeline(env, safety_spec, api_key=api_key)
 
-# Run pipeline
 bundle = pipeline.run(reuse_cache=True, algo="ppo")
 print(f"Bundle generated at: {bundle.path}")
 ```
@@ -591,9 +593,8 @@ safe_algo.save("safe_ppo_cartpole.zip")
 ### Compliance Mapping
 
 ```python
-from proofstack import ComplianceMapper
+from proofstack.compliance_mapper import ComplianceMapper
 
-# Create compliance mapper
 mapper = ComplianceMapper()
 
 # Map artifacts to controls
@@ -611,8 +612,8 @@ compliance_json = mapper.generate_compliance_json(report)
 
 ## Notes
 
-- All file paths are handled using `pathlib.Path` for cross-platform compatibility
-- The library supports both synchronous and asynchronous operations
-- Caching is enabled by default to reduce API calls and improve performance
-- Mock implementations are available for testing without external dependencies
-- The CLI provides a user-friendly interface for common operations
+- File paths use `pathlib.Path` where applicable for cross-platform compatibility
+- The library supports synchronous pipeline runs and async streaming for prover updates in watch mode
+- Proof sketch caching is enabled by default (`reuse_cache=True`) to reduce repeated API calls for identical specs
+- Integration tests live under `tests/`; keep CI credentials and API keys out of the repo
+- The CLI exposes `init`, `train`, `bundle`, and `version` for common workflows

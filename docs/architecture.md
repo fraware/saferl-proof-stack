@@ -339,7 +339,7 @@ sequenceDiagram
     participant Pipeline
 
     Client->>FastAPI: POST /bundle
-    FastAPI->>CLI: bundle(spec_file, mock)
+    FastAPI->>CLI: bundle(spec_file, reuse_cache)
     CLI->>Pipeline: run()
     Pipeline-->>CLI: bundle
     CLI-->>FastAPI: response
@@ -352,14 +352,12 @@ sequenceDiagram
 
 ```mermaid
 graph TD
-    A[Environment Variable] --> B[CLI Validation]
-    B --> C[ProverAPI Client]
+    A[FIREWORKS_API_KEY] --> B[CLI / API validation]
+    B --> C[ProverAPI client]
     C --> D[Fireworks API]
 
-    E[Mock Mode] --> F[Offline Testing]
-
     style A fill:#fff3e0
-    style E fill:#e8f5e8
+    style D fill:#fce4ec
 ```
 
 ### Artifact Integrity
@@ -427,8 +425,8 @@ graph LR
     A[Lean Proofs] --> B[Local Cache]
     B --> C[Reuse Valid Proofs]
 
-    D[API Calls] --> E[Rate Limiting]
-    E --> F[Fallback Proofs]
+    D[API Calls] --> E[Rate limiting & retries]
+    E --> F[Structured errors on failure]
 
     style B fill:#e8f5e8
     style F fill:#fff3e0
@@ -439,7 +437,7 @@ graph LR
 - **Horizontal scaling** via REST API
 - **Async processing** for proof generation
 - **Caching** for repeated specifications
-- **Mock mode** for offline development
+- **Explicit failures** when the prover or validation cannot complete (no silent substitution)
 
 ## Future Architecture
 

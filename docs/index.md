@@ -1,46 +1,55 @@
 # SafeRL ProofStack Documentation
 
-**RL + Formal Proofs + Compliance Bundles + Regulator-Grade Evidence**
+**RL workflows, Lean artifacts, and compliance bundles**
 
-SafeRL ProofStack combines reinforcement learning with formal verification in Lean4 and generates comprehensive compliance artifacts with **complete artifact lineage** for safety-critical AI systems.
+SafeRL ProofStack combines reinforcement learning with formal verification in Lean4 and produces compliance-oriented artifacts with **traceable inputs and outputs** (specs, proofs, guards, attestation).
 
 ## Quick Start
 
-### Install SafeRL ProofStack
+### Install
+
+From [PyPI](https://pypi.org/) when published:
 
 ```bash
 pip install proofstack
 ```
 
-### One-Command Safety Proofs with Compliance
+From a git checkout (see [repository](https://github.com/fraware/saferl-proof-stack)):
 
 ```bash
-# Initialize a new project
+pip install -e .
+```
+
+### CLI workflow
+
+`proofstack bundle` calls the remote prover and requires **`FIREWORKS_API_KEY`** (see [API reference](api_reference.md#environment-variables)).
+
+```bash
+export FIREWORKS_API_KEY="your_key"
+
 proofstack init cartpole
-
-# Train an RL agent
 proofstack train --algo ppo --timesteps 10000
-
-# Generate safety bundle with compliance mapping
 proofstack bundle --algo ppo
 ```
 
-### Complete Workflow with Artifact Lineage
+### Python API (pipeline)
 
 ```python
-from proofstack import ProofPipeline, SpecGen
 import json
+import os
 
-# Create safety specification
+import gymnasium as gym
+from proofstack import ProofPipeline, SpecGen
+
+env = gym.make("CartPole-v1")
 spec = SpecGen()
 spec.invariants = ["|σ.cart_position| ≤ 2.4", "|σ.pole_angle| ≤ 0.2095"]
 spec.guard = ["|σ.cart_position| ≤ 2.3", "|σ.pole_angle| ≤ 0.2"]
 
-# Generate Lean proof and compliance bundle with artifact lineage
+api_key = os.environ["FIREWORKS_API_KEY"]
 pipeline = ProofPipeline(env, spec, api_key)
 bundle = pipeline.run()
 
-# Access compliance mapping
 with open("attestation_bundle/compliance.json") as f:
     compliance_data = json.load(f)
     print(f"Compliance rate: {compliance_data['summary']['compliance_rate']}%")
@@ -58,7 +67,7 @@ Complete API documentation for all classes, methods, and interfaces.
 
 ### [Compliance Mapping](compliance.md)
 
-**Regulator-grade evidence** with complete artifact lineage tracking.
+Structured compliance mapping and artifact lineage in generated reports.
 
 ## System Architecture
 
@@ -85,7 +94,7 @@ graph TB
 
 ### H-0: Stabilization
 
-- **100% test coverage** with property-based tests
+- **Automated tests** including property-based checks (Hypothesis)
 - **Static analysis gates** (ruff, mypy, pre-commit)
 - **Pinned toolchain versions** for deterministic builds
 
@@ -95,11 +104,10 @@ graph TB
 - **Async streaming** for real-time proof updates
 - **REST API** for programmatic access
 
-### H-2: Documentation & Examples
+### H-2: Documentation
 
-- **Live documentation** with mkdocs
-- **Example notebooks** for common use cases
-- **Tutorial videos** (planned)
+- **MkDocs** site (this documentation)
+- Examples in the repository README and test suite
 
 ### H-3: Multi-Algorithm Support
 
@@ -109,11 +117,10 @@ graph TB
 
 ### H-4: Compliance Mapping & Artifact Lineage
 
-- **IEC 61508 SIL 2** compliance mapping
-- **IEC 62443 SL 2** cybersecurity compliance
-- **Complete artifact lineage** tracking
-- **Regulator-grade evidence** generation
-- **Interactive compliance reports**
+- **IEC 61508 SIL 2**-oriented compliance mapping (see [Compliance](compliance.md))
+- **IEC 62443 SL 2**-oriented cybersecurity mapping where applicable
+- **Artifact lineage** fields in generated compliance JSON and reports
+- **HTML/PDF** attestation outputs where configured
 
 ## Use Cases
 
@@ -169,19 +176,14 @@ graph TB
 
 ## Contributing
 
-See our [Contributing Guide](../CONTRIBUTING.md) for:
-
-- Development setup
-- Code style guidelines
-- Testing requirements
-- Pull request process
+See [CONTRIBUTING.md](https://github.com/fraware/saferl-proof-stack/blob/main/CONTRIBUTING.md) in the repository for development setup, checks, and the pull request process.
 
 ## Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-org/saferl-proofstack/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-org/saferl-proofstack/discussions)
+- **Issues**: [GitHub Issues](https://github.com/fraware/saferl-proof-stack/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/fraware/saferl-proof-stack/discussions)
 - **Documentation**: This site
 
 ---
 
-**SafeRL ProofStack** - Making RL systems provably safe with regulator-grade evidence.
+**SafeRL ProofStack** — RL workflows with formal artifacts and structured compliance evidence.

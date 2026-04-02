@@ -1,8 +1,11 @@
-import pytest
-from hypothesis import given, strategies as st
-import httpx
 from unittest.mock import Mock, patch
 
+import httpx
+import pytest
+from hypothesis import given
+from hypothesis import strategies as st
+
+from proofstack.errors import ProverAPIError, ProverNetworkError
 from proofstack.prover_api import ProverAPI
 
 
@@ -58,8 +61,8 @@ class TestProverAPI:
             assert call_args[1]["json"]["stream"] is False
             assert call_args[1]["json"]["max_tokens"] == 2048
 
-    def test_complete_with_api_error_returns_fallback(self):
-        """Test: complete returns fallback proof when API fails."""
+    def test_complete_with_api_error_raises(self):
+        """Test: complete raises typed error when API fails."""
         lean_code = "test lean code"
 
         with patch("httpx.post") as mock_post:
@@ -68,21 +71,18 @@ class TestProverAPI:
                 "404 Not Found", request=Mock(), response=Mock()
             )
 
-            result = self.prover.complete(lean_code)
+            with pytest.raises(ProverAPIError):
+                self.prover.complete(lean_code)
 
-            assert result == "simp [h_guard]"
-
-    def test_complete_with_network_error_returns_fallback(self):
-        """Test: complete returns fallback proof when network fails."""
+    def test_complete_with_network_error_raises(self):
+        """Test: complete raises typed error when network fails."""
         lean_code = "test lean code"
 
         with patch("httpx.post") as mock_post:
             # Mock network error
-            mock_post.side_effect = Exception("Network error")
-
-            result = self.prover.complete(lean_code)
-
-            assert result == "simp [h_guard]"
+            mock_post.side_effect = httpx.ConnectError("Network error")
+            with pytest.raises(ProverNetworkError):
+                self.prover.complete(lean_code)
 
     @given(
         api_key=st.text(
@@ -128,8 +128,8 @@ class TestProverAPI:
     def test_complete_preserves_lean_code_content(self):
         """Test: complete preserves the content of the Lean code in the request."""
         lean_code = """
-        theorem cartpole_safety : 
-          ∀ (σ : State) (a : Action), 
+        theorem cartpole_safety :
+          ∀ (σ : State) (a : Action),
           guard σ a → safe (step σ a) := by
           sorry
         """

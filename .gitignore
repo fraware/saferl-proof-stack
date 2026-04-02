@@ -9,6 +9,10 @@ __pycache__/
 # Poetry
 poetry.lock
 
+# Build / site output
+dist/
+site/
+
 # Lean
 lake-packages/
 build/
@@ -25,3 +29,13 @@ sbom.spdx.json
 
 # VSCode
 .vscode/ 
+
+# Test and local runtime artifacts
+.coverage
+coverage.xml
+htmlcov/
+.hypothesis/
+lean_output/
+guard_output/
+attestation_bundle/
+.proofstack_cache/

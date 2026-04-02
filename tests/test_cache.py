@@ -1,11 +1,10 @@
-import pytest
-from hypothesis import given, strategies as st
-from pathlib import Path
-import tempfile
-import shutil
 import json
-import hashlib
-from unittest.mock import patch, mock_open
+import shutil
+import tempfile
+from pathlib import Path
+
+from hypothesis import given
+from hypothesis import strategies as st
 
 from proofstack.cache import ProofCache
 
@@ -41,11 +40,13 @@ class TestProofCache:
         assert key1 == "abc123_ppo_def456"
 
     def test_cache_path_generation(self):
-        """Test: Cache path generation creates correct file paths."""
+        """Test: Cache path generation creates stable paths under the cache dir."""
         key = "test_key"
-        expected_path = self.cache_dir / "test_key.json"
-
-        assert self.cache._cache_path(key) == expected_path
+        p1 = self.cache._cache_path(key)
+        p2 = self.cache._cache_path(key)
+        assert p1 == p2
+        assert p1.parent == self.cache_dir
+        assert p1.suffix == ".json"
 
     def test_cache_set_and_get(self):
         """Test: Basic cache set and get functionality."""
@@ -186,7 +187,7 @@ class TestProofCache:
         assert cache_file.exists()
 
         # Read file directly
-        with open(cache_file, "r", encoding="utf-8") as f:
+        with open(cache_file, encoding="utf-8") as f:
             stored_data = json.load(f)
 
         assert stored_data == proof_sketch

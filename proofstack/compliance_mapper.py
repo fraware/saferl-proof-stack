@@ -3,13 +3,17 @@
 Compliance Mapping Module
 Links control objectives to specific artifacts for regulator-grade evidence.
 """
+# ruff: noqa: UP006,UP035,B904,C401
+
+import json
+from dataclasses import dataclass
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 import yaml
-import json
-from pathlib import Path
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass, asdict
-from datetime import datetime
+
+from .errors import ArtifactGenerationError
 
 
 @dataclass
@@ -65,7 +69,7 @@ class ComplianceMapper:
     def load_standards(self):
         """Load all available compliance standards."""
         for yaml_file in self.standards_dir.glob("*.yaml"):
-            with open(yaml_file, "r") as f:
+            with open(yaml_file) as f:
                 standard_data = yaml.safe_load(f)
                 standard_name = yaml_file.stem
                 self.standards[standard_name] = standard_data
@@ -371,26 +375,26 @@ class ComplianceMapper:
     def _load_lean_content(self, lean_file_path: str) -> str:
         """Load Lean file content."""
         try:
-            with open(lean_file_path, "r", encoding="utf-8") as f:
+            with open(lean_file_path, encoding="utf-8") as f:
                 return f.read()
         except FileNotFoundError:
-            return "# Mock Lean content for testing"
+            raise ArtifactGenerationError(f"Lean artifact not found: {lean_file_path}")
 
     def _load_guard_content(self, guard_file_path: str) -> str:
         """Load guard code content."""
         try:
-            with open(guard_file_path, "r", encoding="utf-8") as f:
+            with open(guard_file_path, encoding="utf-8") as f:
                 return f.read()
         except FileNotFoundError:
-            return "// Mock guard code for testing"
+            raise ArtifactGenerationError(f"Guard artifact not found: {guard_file_path}")
 
     def _load_sbom_data(self, sbom_file_path: str) -> Dict:
         """Load SBOM data."""
         try:
-            with open(sbom_file_path, "r", encoding="utf-8") as f:
+            with open(sbom_file_path, encoding="utf-8") as f:
                 return json.load(f)
         except FileNotFoundError:
-            return {"components": []}
+            raise ArtifactGenerationError(f"SBOM artifact not found: {sbom_file_path}")
 
     def _create_compliance_summary(
         self, control_mappings: List[ControlMapping]

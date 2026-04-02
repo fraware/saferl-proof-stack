@@ -1,11 +1,11 @@
 """Multi-algorithm support for SafeRL ProofStack."""
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Optional
+from typing import Optional
+
 import gymnasium as gym
 import numpy as np
-
-from stable_baselines3 import PPO, SAC, DDPG
+from stable_baselines3 import DDPG, PPO, SAC
 from stable_baselines3.common.base_class import BaseAlgorithm
 
 
@@ -197,7 +197,7 @@ class SACSafeAdapter(SafeAlgorithmAdapter):
         # Continuous control safety penalty
         if len(state) >= 4:
             # Example: penalty for extreme values
-            for i, val in enumerate(state):
+            for _, val in enumerate(state):
                 if abs(val) > 0.8:
                     penalty += (abs(val) - 0.8) * 5.0
 
@@ -243,7 +243,7 @@ class DDPGSafeAdapter(SafeAlgorithmAdapter):
 
         # DDPG-specific safety penalty (more conservative)
         if len(state) >= 4:
-            for i, val in enumerate(state):
+            for _, val in enumerate(state):
                 if abs(val) > 0.7:  # More conservative threshold
                     penalty += (abs(val) - 0.7) * 8.0  # Higher penalty
 

@@ -1,9 +1,9 @@
-import pytest
-from hypothesis import given, strategies as st
-from pathlib import Path
-import tempfile
 import shutil
-import hashlib
+import tempfile
+from pathlib import Path
+
+from hypothesis import given
+from hypothesis import strategies as st
 
 from proofstack.attestation import Attestation
 
@@ -17,7 +17,13 @@ class MockSafetySpec:
 
 class MockGuardGen:
     def __init__(self):
-        pass
+        self.path = None
+
+    def emit_c(self, spec):
+        if self.path is None:
+            self.path = Path(tempfile.mkdtemp()) / "guard.c"
+            self.path.write_text("int main(void) { return 0; }", encoding="utf-8")
+        return str(self.path)
 
 
 class TestAttestation:
@@ -81,10 +87,10 @@ class TestAttestation:
         assert sbom_path.suffix == ".json"
 
         content = sbom_path.read_text(encoding="utf-8")
-        assert content.strip() in ["{}", ""]  # Either empty or valid JSON
+        assert "SPDX-2.3" in content
 
     def test_generate_pdf_creates_file(self):
-        """Test: generate_pdf creates a file (even if placeholder)."""
+        """Test: generate_pdf creates a deterministic artifact file."""
         # Arrange
         html_path = Path(self.temp_dir) / "test.html"
         html_path.write_text("<html><body>test</body></html>", encoding="utf-8")

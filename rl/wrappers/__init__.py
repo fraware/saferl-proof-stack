@@ -1,1 +1,5 @@
-# Placeholder for Gymnasium → ProofStack environment wrappers
+"""Wrapper compatibility package."""
+
+from proofstack.rl.algorithms import SafeEnvWrapper
+
+__all__ = ["SafeEnvWrapper"]
