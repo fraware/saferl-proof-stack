@@ -1,9 +1,11 @@
-import pytest
-from hypothesis import given, strategies as st
-from pathlib import Path
-import tempfile
 import shutil
+import tempfile
+from pathlib import Path
 from unittest.mock import Mock, patch
+
+import pytest
+from hypothesis import given
+from hypothesis import strategies as st
 
 from proofstack.pipeline import ProofPipeline
 
@@ -49,7 +51,7 @@ class TestProofPipeline:
 
             # Act
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             # Assert
             assert bundle is not None
@@ -72,7 +74,7 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             assert bundle is not None
             assert hasattr(bundle, "path")
@@ -88,28 +90,22 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             assert bundle is not None
             assert hasattr(bundle, "path")
 
-    def test_pipeline_with_api_error_continues(self):
-        """Test: Pipeline continues even when API fails."""
+    def test_pipeline_with_api_error_raises(self):
+        """Test: Pipeline fails fast when prover API fails."""
         spec = MockSafetySpec(["inv1"], ["guard1"], [])
 
         with patch("proofstack.prover_api.ProverAPI.complete") as mock_complete:
             # Mock API error - the pipeline should handle this gracefully
-            mock_complete.side_effect = Exception("API Error")
+            mock_complete.side_effect = RuntimeError("API Error")
 
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            # The pipeline should not raise an exception
-            try:
-                bundle = pipeline.run()
-                assert bundle is not None
-                assert hasattr(bundle, "path")
-            except Exception:
-                # If it does raise, that's also acceptable for now
-                pass
+            with pytest.raises(RuntimeError):
+                pipeline.run(reuse_cache=False)
 
     def test_pipeline_creates_lean_output(self):
         """Test: Pipeline creates Lean output directory and files."""
@@ -119,7 +115,7 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            bundle = pipeline.run()
+            pipeline.run(reuse_cache=False)
 
             # Check that Lean output was created
             lean_output_dir = Path("lean_output")
@@ -136,7 +132,7 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, self.api_key)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             # Check that attestation bundle was created
             bundle_dir = Path(bundle.path)
@@ -162,7 +158,7 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, self.api_key, prover=custom_model)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             assert bundle is not None
             assert hasattr(bundle, "path")
@@ -182,7 +178,7 @@ class TestProofPipeline:
             mock_complete.return_value = "simp [h_guard]"
 
             pipeline = ProofPipeline(self.env, spec, api_key)
-            bundle = pipeline.run()
+            bundle = pipeline.run(reuse_cache=False)
 
             assert bundle is not None
             assert hasattr(bundle, "path")
@@ -222,7 +218,7 @@ class TestProofPipeline:
                             mock_bundle.return_value = Mock(path="attestation_bundle")
 
                             pipeline = ProofPipeline(self.env, spec, self.api_key)
-                            bundle = pipeline.run()
+                            pipeline.run(reuse_cache=False)
 
                             # Verify the sequence of operations
                             mock_emit_lean.assert_called_once()

@@ -1,10 +1,10 @@
 site_name: SafeRL ProofStack
 site_description: RL + Formal Proofs + Compliance Bundles
 site_author: SafeRL ProofStack Team
-site_url: https://your-org.github.io/proofstack
+site_url: https://fraware.github.io/saferl-proof-stack/
 
-repo_name: your-org/saferl-proofstack
-repo_url: https://github.com/your-org/saferl-proofstack
+repo_name: fraware/saferl-proof-stack
+repo_url: https://github.com/fraware/saferl-proof-stack
 edit_uri: edit/main/docs/
 
 theme:
@@ -66,7 +66,6 @@ plugins:
           lineColor: "#3f51b5"
           secondaryColor: "#f50057"
           tertiaryColor: "#e8f5e8"
-  - mkdocs-click
 
 markdown_extensions:
   - abbr
@@ -115,9 +114,7 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-org/saferl-proofstack
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/saferl_proofstack
+      link: https://github.com/fraware/saferl-proof-stack
   version:
     provider: mike
   analytics:
@@ -126,16 +123,9 @@ extra:
 
 nav:
   - Home: index.md
-  - CLI Reference: cli_reference.md
   - Architecture: architecture.md
-  - Safety Specifications: safety.md
-  - Lean4 Integration: lean.md
-  - Examples:
-    - CartPole Safety: notebooks/cartpole_safety.md
-    - Compressor Station: notebooks/compressor_station.md
-    - Robotic Arm: notebooks/robotic_arm.md
   - API Reference: api_reference.md
-  - Contributing: contributing.md
+  - Compliance: compliance.md
 
 extra_css:
   - stylesheets/extra.css

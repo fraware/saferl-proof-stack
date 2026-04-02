@@ -2,14 +2,15 @@
 
 __version__ = "0.1.0"
 
-from .pipeline import ProofPipeline
-from .specgen import SpecGen
-from .prover_api import ProverAPI
 from .attestation import Attestation
-from .guard_codegen import GuardGen
 
 # Re-export CLI entry points
 from .cli import app as cli_app
+from .contracts import SafetySpecInput, load_safety_spec
+from .guard_codegen import GuardGen
+from .pipeline import ProofPipeline
+from .prover_api import ProverAPI
+from .specgen import SpecGen
 
 __all__ = [
     "ProofPipeline",
@@ -17,6 +18,8 @@ __all__ = [
     "ProverAPI",
     "Attestation",
     "GuardGen",
+    "SafetySpecInput",
+    "load_safety_spec",
     "cli_app",
     "__version__",
 ]

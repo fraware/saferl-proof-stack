@@ -1,19 +1,17 @@
-# Example: Compressor Policy RL Script
-# Placeholder for training and evaluating a safe RL policy on CompressorEnv
-
 import gymnasium as gym
-from stable_baselines3 import PPO
+from proofstack.rl.algorithms import create_safe_algorithm
+
+
+def train_compressor_policy(total_timesteps: int = 10_000) -> str:
+    """Train a safety-constrained policy and return saved model path."""
+    env = gym.make("CartPole-v1")
+    safe_algo = create_safe_algorithm("ppo", env)
+    safe_algo.train(total_timesteps=total_timesteps)
+    output_path = "ppo_cartpole_safe.zip"
+    safe_algo.save(output_path)
+    return output_path
+
 
 if __name__ == "__main__":
-    # Create the environment
-    env = gym.make("CartPole-v1")
-
-    # Instantiate the agent
-    model = PPO("MlpPolicy", env, verbose=1)
-
-    # Train the agent
-    model.learn(total_timesteps=10_000)
-
-    # Save the trained model
-    model.save("ppo_cartpole.zip")
-    print("Trained PPO agent saved as 'ppo_cartpole.zip'")
+    artifact = train_compressor_policy()
+    print(f"Trained safe PPO agent saved as '{artifact}'")

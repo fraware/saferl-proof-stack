@@ -1,0 +1,34 @@
+name: Security
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry pip-audit
+          poetry install
+          poetry run pip freeze --all > requirements-audit.txt
+      - name: Run dependency audit
+        run: |
+          pip-audit -r requirements-audit.txt
+
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run semgrep scan
+        run: semgrep scan --config auto

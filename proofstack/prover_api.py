@@ -1,9 +1,13 @@
 """Fireworks DeepSeek-Prover API integration for Lean proof completion."""
 
-import httpx
-import os
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
 
+import httpx
+
+from .errors import ProverAPIError, ProverNetworkError
+from .observability import get_logger, log_event
+
+LOGGER = get_logger(__name__)
 
 class ProverAPI:
     """
@@ -48,16 +52,25 @@ class ProverAPI:
         try:
             r = httpx.post(self.url, json=payload, headers=self.headers, timeout=120)
             r.raise_for_status()
-            return r.json()["choices"][0]["message"]["content"]
-        except httpx.HTTPStatusError as e:
-            print(f"API Error: {e}")
-            print(f"Response: {e.response.text}")
-            # Return a placeholder proof for testing
-            return "simp [h_guard]"
-        except Exception as e:
-            print(f"Network Error: {e}")
-            # Return a placeholder proof for testing
-            return "simp [h_guard]"
+            data = r.json()
+            content = data["choices"][0]["message"]["content"]
+            if not isinstance(content, str) or not content.strip():
+                raise ProverAPIError("Prover response contained empty proof content.")
+            return content
+        except httpx.HTTPStatusError as exc:
+            response_text = exc.response.text if exc.response else "no_response"
+            log_event(
+                LOGGER,
+                "prover_api_http_error",
+                status_code=exc.response.status_code if exc.response else None,
+                response_text=response_text,
+            )
+            raise ProverAPIError(
+                f"Prover API returned HTTP error: {exc}"
+            ) from exc
+        except httpx.HTTPError as exc:
+            log_event(LOGGER, "prover_api_network_error", error=str(exc))
+            raise ProverNetworkError(f"Prover API network failure: {exc}") from exc
 
     async def stream(self, lean_file: str) -> AsyncIterator[str]:
         """Stream proof generation updates in real-time.
@@ -70,7 +83,7 @@ class ProverAPI:
         """
         try:
             # Read the Lean file
-            with open(lean_file, "r", encoding="utf-8") as f:
+            with open(lean_file, encoding="utf-8") as f:
                 lean_code = f.read()
 
             yield "🤖 Reading Lean specification..."
@@ -121,7 +134,6 @@ class ProverAPI:
 
                     yield "✅ Proof generation completed!"
 
-        except Exception as e:
-            yield f"❌ Error during proof generation: {str(e)}"
-            yield "🔧 Falling back to mock proof..."
-            yield "simp [h_guard]"
+        except Exception as exc:
+            log_event(LOGGER, "prover_stream_error", error=str(exc))
+            raise ProverNetworkError(f"Streaming proof generation failed: {exc}") from exc

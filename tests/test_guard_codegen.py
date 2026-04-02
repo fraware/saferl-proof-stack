@@ -1,11 +1,10 @@
-import pytest
-from hypothesis import given, strategies as st
-from pathlib import Path
-import tempfile
 import shutil
+import tempfile
+
+from hypothesis import given
+from hypothesis import strategies as st
 
 from proofstack.guard_codegen import GuardGen
-from proofstack.specgen import SpecGen
 
 
 class MockSafetySpec:

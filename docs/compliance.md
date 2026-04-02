@@ -1,10 +1,10 @@
 # Compliance Mapping & Artifact Lineage
 
-SafeRL ProofStack provides **regulator-grade evidence** by mapping every control objective to specific artifacts through comprehensive compliance mapping and artifact lineage tracking.
+SafeRL ProofStack maps control objectives to concrete artifacts (Lean, guards, SBOM, tests) and records that mapping in **compliance.json** with lineage fields for review and tooling.
 
 ## Overview
 
-The compliance system transforms SafeRL ProofStack bundles into **audit-ready evidence** that satisfies international standards:
+The compliance layer is aligned with common industrial safety and security frameworks for traceability:
 
 - **IEC 61508 SIL 2** - Functional Safety for Industrial Systems
 - **IEC 62443 SL 2** - Industrial Cybersecurity
@@ -72,7 +72,7 @@ The core compliance mapping file that links every control objective to specific 
 
 The HTML report provides an interactive view of compliance status:
 
-![Compliance Report Overview](images/compliance-report-overview.png)
+*Illustrative screenshot omitted; the generated HTML mirrors the structure shown below.*
 
 #### Key Features:
 
@@ -156,7 +156,7 @@ The HTML report provides an interactive view of compliance status:
 
 The PDF provides a printable summary for regulatory submissions:
 
-![PDF Summary Report](images/pdf-summary-report.png)
+*Illustrative screenshot omitted; the PDF is generated alongside HTML in the attestation output directory.*
 
 ## Compliance Standards Coverage
 

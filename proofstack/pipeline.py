@@ -1,8 +1,11 @@
-from proofstack.specgen import SpecGen
-from proofstack.prover_api import ProverAPI
 from proofstack.attestation import Attestation
-from proofstack.guard_codegen import GuardGen
 from proofstack.cache import ProofCache
+from proofstack.guard_codegen import GuardGen
+from proofstack.observability import get_logger, log_event
+from proofstack.prover_api import ProverAPI
+from proofstack.specgen import SpecGen
+
+LOGGER = get_logger(__name__)
 
 
 class ProofPipeline:
@@ -18,12 +21,18 @@ class ProofPipeline:
         self.spec = SpecGen()
         # Populate spec fields from safety_spec dict if provided
         if safety_spec:
-            if hasattr(self.spec, "invariants") and "invariants" in safety_spec:
-                self.spec.invariants = safety_spec["invariants"]
-            if hasattr(self.spec, "guard") and "guard" in safety_spec:
-                self.spec.guard = safety_spec["guard"]
-            if hasattr(self.spec, "lemmas") and "lemmas" in safety_spec:
-                self.spec.lemmas = safety_spec["lemmas"]
+            if hasattr(safety_spec, "invariants"):
+                self.spec.invariants = list(safety_spec.invariants)
+            elif isinstance(safety_spec, dict):
+                self.spec.invariants = safety_spec.get("invariants", [])
+            if hasattr(safety_spec, "guard"):
+                self.spec.guard = list(safety_spec.guard)
+            elif isinstance(safety_spec, dict):
+                self.spec.guard = safety_spec.get("guard", [])
+            if hasattr(safety_spec, "lemmas"):
+                self.spec.lemmas = list(safety_spec.lemmas)
+            elif isinstance(safety_spec, dict):
+                self.spec.lemmas = safety_spec.get("lemmas", [])
         self.prover = ProverAPI(api_key=api_key, model=prover)
         self.attestation = Attestation()
         self.guardgen = GuardGen()
@@ -55,8 +64,11 @@ class ProofPipeline:
         self.spec.write_proof(proof)
         self.guardgen.emit_c(self.spec)
         bundle = self.attestation.bundle(self.spec, self.guardgen, algorithm=algo)
-        if cache_hit:
-            print("[ProofCache] Cache hit: reused proof sketch.")
-        else:
-            print("[ProofCache] Cache miss: generated new proof.")
+        log_event(
+            LOGGER,
+            "pipeline_run_completed",
+            cache_hit=cache_hit,
+            algorithm=algo,
+            bundle_path=bundle.path,
+        )
         return bundle

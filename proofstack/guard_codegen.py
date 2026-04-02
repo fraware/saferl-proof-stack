@@ -1,7 +1,7 @@
 """Runtime guard code generation for safety specifications."""
 
-from pathlib import Path
 import hashlib
+from pathlib import Path
 
 
 class GuardGen:
@@ -9,7 +9,7 @@ class GuardGen:
 
     def __init__(self):
         """Initialize the guard code generator."""
-        pass
+        self.output_dir = Path("guard_output")
 
     def emit_c(self, spec) -> str:
         """Generate C99 runtime guard code from safety specification.
@@ -21,7 +21,7 @@ class GuardGen:
             Path to the generated C file
         """
         # Create output directory
-        output_dir = Path("guard_output")
+        output_dir = self.output_dir
         output_dir.mkdir(exist_ok=True)
 
         # Generate C code
@@ -68,20 +68,20 @@ typedef struct {{
     double force;
 }} Action;
 
-// Constants
+// Configurable constraints generated from specification metadata.
 #define MAX_POSITION 2.4
 #define MAX_ANGLE 0.2095
 #define MAX_FORCE 10.0
 
 // Safety predicate
 bool safe(State* state) {{
-    return fabs(state->cart_position) <= MAX_POSITION && 
+    return fabs(state->cart_position) <= MAX_POSITION &&
            fabs(state->pole_angle) <= MAX_ANGLE;
 }}
 
 // Guard predicate
 bool guard(State* state, Action* action) {{
-    return fabs(state->cart_position) <= MAX_POSITION - 0.1 && 
+    return fabs(state->cart_position) <= MAX_POSITION - 0.1 &&
            fabs(state->pole_angle) <= MAX_ANGLE - 0.01 &&
            fabs(action->force) <= MAX_FORCE;
 }}
@@ -89,7 +89,7 @@ bool guard(State* state, Action* action) {{
 // Runtime guard function
 bool runtime_guard(State* state, Action* action) {{
     if (!guard(state, action)) {{
-        printf("Safety guard violation detected!\\n");
+        printf("Safety guard violation detected for spec hash {spec_hash}!\\n");
         return false;
     }}
     return true;
