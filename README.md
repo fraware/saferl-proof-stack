@@ -1,8 +1,22 @@
-# SafeRL ProofStack
+<h1 align="center">SafeRL ProofStack</h1>
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![Repository](https://img.shields.io/badge/GitHub-saferl--proof--stack-181717?logo=github)](https://github.com/fraware/saferl-proof-stack)
+<p align="center">
+  <em>Safe reinforcement learning, formally grounded.</em>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  &nbsp;
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python 3.9+" /></a>
+  &nbsp;
+  <a href="https://github.com/fraware/saferl-proof-stack"><img src="https://img.shields.io/badge/GitHub-saferl--proof--stack-181717?logo=github" alt="Repository" /></a>
+</p>
+
+<p align="center">
+  <img src="docs/assets/saferl-logo.png" alt="SafeRL ProofStack logo" width="260" />
+</p>
+
+---
 
 **ProofStack** turns reinforcement-learning setups into a repeatable pipeline: you describe safety properties in a structured form, generate **Lean** artifacts, call a **remote prover** where needed, emit **runtime guard code**, and assemble **compliance-oriented bundles** (reports, SBOM, attestation outputs).
 
