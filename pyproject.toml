@@ -33,7 +33,7 @@ mkdocs-material = "==9.5.3"
 mkdocs-mermaid2-plugin = "==0.6.0"
 mkdocs-click = "==0.8.0"
 jupyter = "==1.0.0"
-nbconvert = "==7.16.0"
+nbconvert = "==7.17.0"
 
 [tool.poetry.scripts]
 proofstack = "proofstack.cli:app"
