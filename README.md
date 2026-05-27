@@ -1,4 +1,11 @@
-<h1 align="center">SafeRL ProofStack</h1>
+<pre>
+  ____         __          ____  _         ____                   __     ____  _             _    
+ / ___|  __ _ / _| ___    |  _ \| |       |  _ \ _ __ ___   ___  / _|   / ___|| |_ __ _  ___| | __
+ \___ \ / _` | |_ / _ \   | |_) | |       | |_) | '__/ _ \ / _ \| |_    \___ \| __/ _` |/ __| |/ /
+  ___) | (_| |  _|  __/   |  _ <| |___    |  __/| | | (_) | (_) |  _|    ___) | || (_| | (__|   < 
+ |____/ \__,_|_|  \___|   |_| \_\_____|   |_|   |_|  \___/ \___/|_|     |____/ \__\__,_|\___|_|\_\
+                                                                                                  
+</pre>
 
 <p align="center">
   <em>Safe reinforcement learning, formally grounded.</em>
@@ -10,10 +17,6 @@
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue.svg" alt="Python 3.9+" /></a>
   &nbsp;
   <a href="https://github.com/fraware/saferl-proof-stack"><img src="https://img.shields.io/badge/GitHub-saferl--proof--stack-181717?logo=github" alt="Repository" /></a>
-</p>
-
-<p align="center">
-  <img src="docs/assets/saferl-logo.png" alt="SafeRL ProofStack logo" width="260" />
 </p>
 
 ---
