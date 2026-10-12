@@ -8,10 +8,11 @@ structure State where
 structure Action where
   ΔValve : Float
 
-constant MAOP : Float
+-- External maximum allowable operating pressure parameter; no value is assumed.
+opaque MAOP : Float
 
 def safe (σ : State) : Prop :=
   σ.surgeMargin ≥ 0.05 ∧ σ.Pdisch ≤ MAOP - 50
 
-def guard (σ : State) (a : Action) : Prop :=
-  σ.surgeMargin ≥ 0.07 ∧ |a.ΔValve| ≤ 0.05 ∧ σ.Pdisch ≤ MAOP - 50
+def compressorGuard (σ : State) (a : Action) : Prop :=
+  σ.surgeMargin ≥ 0.07 ∧ Float.abs a.ΔValve ≤ 0.05 ∧ σ.Pdisch ≤ MAOP - 50
