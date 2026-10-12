@@ -29,11 +29,11 @@ mypy = "==1.8.0"
 pre-commit = "==3.6.0"
 cyclonedx-bom = "==4.0.0"
 mkdocs = "==1.5.3"
-mkdocs-material = "==9.5.3"
+mkdocs-material = "==9.7.7"
 mkdocs-mermaid2-plugin = "==0.6.0"
 mkdocs-click = "==0.8.0"
 jupyter = "==1.0.0"
-nbconvert = "==7.16.0"
+nbconvert = "==7.17.1"
 
 [tool.poetry.scripts]
 proofstack = "proofstack.cli:app"
