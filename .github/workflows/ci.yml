@@ -50,13 +50,16 @@ jobs:
           poetry run proofstack init test_env
           poetry run proofstack version
 
-      - name: Test Lean proof checking
+      - name: Install repository-pinned Lean toolchain
         run: |
-          if command -v lake >/dev/null 2>&1; then
-            poetry run lake build
-          else
-            echo "lake not installed in runner, skipping Lean build step"
-          fi
+          curl -fsSL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          elan default "$(head -n 1 lean-toolchain)"
+          lake --version
+
+      - name: Build Lean proofs (mandatory)
+        run: lake build
 
       - name: Build documentation
         run: |
