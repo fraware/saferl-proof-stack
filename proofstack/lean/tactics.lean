@@ -1,9 +1,9 @@
+import Mathlib.Tactic
+
 /-!
   SafeRL ProofStack: Common Lean4 Tactics & Macro Rules
   This file collects reusable proof automation for all generated proofs.
 -/
-
-import Mathlib.Tactic
 
 namespace ProofStack
 
