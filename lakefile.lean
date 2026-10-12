@@ -6,6 +6,8 @@ open Lake DSL
 package proofstack
 
 @[default_target]
-lean_lib Proofstack
+lean_lib Proofstack where
+  -- Compile both checked-in Lean sources. No Proofstack.lean root exists.
+  roots := #[`proofstack.lean.tactics, `specs.examples.compressor_station]
 
 require mathlib from git "https://github.com/leanprover-community/mathlib4.git" @ "v4.7.0"
