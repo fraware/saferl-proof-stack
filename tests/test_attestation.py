@@ -1,11 +1,14 @@
+import json
 import shutil
 import tempfile
 from pathlib import Path
 
+import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
 from proofstack.attestation import Attestation
+from proofstack.errors import ArtifactGenerationError
 
 
 class MockSafetySpec:
@@ -33,6 +36,19 @@ class TestAttestation:
         """Set up test fixtures."""
         self.temp_dir = tempfile.mkdtemp()
         self.attestation = Attestation(out_dir=self.temp_dir)
+
+        # These are bundle-packaging unit tests, not formal verification tests.
+        # Stub the independently tested compliance mapper. Never synthesize a
+        # Lean proof file or claim that a mock safety specification was proved.
+        def mock_compliance_mapping(spec, guardgen, algorithm="ppo"):
+            output = Path(self.temp_dir) / "compliance.json"
+            output.write_text(
+                json.dumps({"test_stub": True, "verified": False}),
+                encoding="utf-8",
+            )
+            return output
+
+        self.attestation.generate_compliance_mapping = mock_compliance_mapping
 
     def teardown_method(self):
         """Clean up test fixtures."""
@@ -134,6 +150,15 @@ class TestAttestation:
 
         for expected_file in expected_files:
             assert (bundle_dir / expected_file).exists()
+
+    def test_bundle_requires_real_lean_artifact(self, monkeypatch):
+        """Production mapping must reject missing Lean evidence, not invent it."""
+        monkeypatch.chdir(self.temp_dir)
+        actual = Attestation(out_dir=self.temp_dir)
+        spec = MockSafetySpec(["bounded_position"], ["guard1"], ["lemma1"])
+
+        with pytest.raises(ArtifactGenerationError, match="Lean artifact not found"):
+            actual.bundle(spec, MockGuardGen())
 
     def test_bundle_with_empty_spec(self):
         """Test edge case: bundle with empty safety specification."""
